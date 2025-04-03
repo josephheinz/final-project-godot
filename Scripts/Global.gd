@@ -4,11 +4,14 @@ var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
 enum TILE_TYPES {EMPTY = 0, COMBAT = 1, ELITE_COMBAT = 2, SHOP = 3}
 const TILE_REFS: Array = [
-	
+	preload("res://Tiles/Scenes/emptyTile.tscn"),
+	preload("res://Tiles/Scenes/combatTile.tscn"),
+	preload("res://Tiles/Scenes/eliteCombatTile.tscn"),
+	preload("res://Tiles/Scenes/shopTile.tscn")
 ]
 
-#const START_TILE_SCENE: PackedScene
-#const BOSS_TILE_SCENE: PackedScene
+const START_TILE_SCENE: PackedScene = preload("res://Tiles/Scenes/startTile.tscn")
+const BOSS_TILE_SCENE: PackedScene = preload("res://Tiles/Scenes/bossTile.tscn")
 
 #const PLAYER: PackedScene
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://co2bsc7gxf0bq"]
+
+[ext_resource type="Script" uid="uid://cmw8sxtx5777u" path="res://Tiles/Scripts/elite_combat_tile.gd" id="1_irsbh"]
+[ext_resource type="Texture2D" uid="uid://cclcyjv4s6a6t" path="res://Sprites/Tiles/crossed-swords.png" id="1_jci5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irsbh"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[node name="EliteCombatTile" type="Node2D"]
+script = ExtResource("1_irsbh")
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_irsbh")
+
+[node name="Crossed Swords" type="Sprite2D" parent="Background"]
+position = Vector2(50, 50)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_jci5j")

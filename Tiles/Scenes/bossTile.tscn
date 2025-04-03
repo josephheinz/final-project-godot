@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq7juq2wmvste"]
+
+[ext_resource type="Script" uid="uid://bnwe25fwyw3rf" path="res://Tiles/Scripts/boss_tile.gd" id="1_8hf1y"]
+[ext_resource type="Texture2D" uid="uid://benop1w51r52q" path="res://Sprites/Tiles/skull.png" id="2_yr881"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvgx4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[node name="BossTile" type="Node2D"]
+script = ExtResource("1_8hf1y")
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qvgx4")
+
+[node name="Skull" type="Sprite2D" parent="Background"]
+position = Vector2(50, 50)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_yr881")

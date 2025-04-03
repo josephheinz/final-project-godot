@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://0iddwhss52rw"]
+
+[ext_resource type="Script" uid="uid://ca50r1mlqebys" path="res://Tiles/Scripts/empty_tile.gd" id="1_s3nbg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu6ha"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[node name="EmptyTile" type="Node2D"]
+script = ExtResource("1_s3nbg")
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qu6ha")

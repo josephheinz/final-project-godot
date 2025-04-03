@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cppw8l6cj1mpy"]
+
+[ext_resource type="Script" uid="uid://csx0phgws7utl" path="res://Tiles/Scripts/combat_tile.gd" id="1_kwxt8"]
+[ext_resource type="Texture2D" uid="uid://cnrj2oueytfyf" path="res://Sprites/Tiles/sword.png" id="2_snn0d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m3ux"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[node name="CombatTile" type="Node2D"]
+script = ExtResource("1_kwxt8")
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4m3ux")
+
+[node name="Sword" type="Sprite2D" parent="Background"]
+position = Vector2(50, 50)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_snn0d")
