@@ -73,6 +73,7 @@ func generate_dungeon(settings: GeneratorSettings) -> void:
 
 func check_neighbors(position: Vector2i) -> Array[Node]:
 	var neighbors: Array[Node] = []
+	# yuck
 	if Global.RoomsMap.has(position - Vector2i(1, 0)):
 		neighbors.append(Global.RoomsMap[position - Vector2i(1, 0)])
 	elif Global.RoomsMap.has(position - Vector2i(0, 1)):
