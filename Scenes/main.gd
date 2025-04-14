@@ -51,7 +51,8 @@ func generate_dungeon(settings: GeneratorSettings) -> void:
 		# Make sure the new room location doesn't exist and is in bounds
 		while Global.RoomsMap.has(new_pos) or !in_bounds(new_pos, bounds):
 			if direction_attempts > 10:
-				return # Too many tries will take too long
+				place_boss_tile() # Too many tries will take too long
+				return
 			direction = directions[Global.RNG.randi_range( 0, len(directions) - 1 )]
 			print_debug("Trying to find a valid direction")
 			direction_attempts += 1
@@ -60,7 +61,7 @@ func generate_dungeon(settings: GeneratorSettings) -> void:
 		current_pos = new_pos
 		var room_type: int = Global.RNG.randi_range( 0, len( Global.TILE_TYPES ) - 1 )
 		if room_count == settings.maxRooms:
-			var boss_tile: Node = add_specific_room(current_pos * Tile.Size, Global.BOSS_TILE_SCENE)
+			place_boss_tile()
 			break
 		# Check to make sure max amount of rooms of this type hasn't been exceeded
 		while room_type_amounts[room_type] >= settings.roomMaxes[room_type]:
@@ -68,6 +69,45 @@ func generate_dungeon(settings: GeneratorSettings) -> void:
 		var new_room = add_room(current_pos * Tile.Size, room_type)
 		room_type_amounts[room_type] += 1
 		room_count += 1
+	return
+
+func check_neighbors(position: Vector2i) -> Array[Node]:
+	var neighbors: Array[Node] = []
+	if Global.RoomsMap.has(position - Vector2i(1, 0)):
+		neighbors.append(Global.RoomsMap[position - Vector2i(1, 0)])
+	elif Global.RoomsMap.has(position - Vector2i(0, 1)):
+		neighbors.append(Global.RoomsMap[position - Vector2i(0, 1)])
+	elif Global.RoomsMap.has(position + Vector2i(1, 0)):
+		neighbors.append(Global.RoomsMap[position + Vector2i(1, 0)])
+	elif Global.RoomsMap.has(position + Vector2i(0, 1)):
+		neighbors.append(Global.RoomsMap[position + Vector2i(0, 1)])
+	return neighbors
+
+func place_boss_tile() -> void:
+	var max_pos: Vector2i = Vector2i(0, 0)
+	for room in Global.RoomsMap:
+		var _room = Global.RoomsMap[room]
+		if _room.position.x > max_pos.x:
+			max_pos.x = _room.position.x / Tile.Size.x
+		if _room.position.y > max_pos.y:
+			max_pos.y = _room.position.y / Tile.Size.y
+	
+	# Choose a direction to be the furthest away from the start
+	var direction: Vector2i = Vector2i(0, 0)
+	if max_pos.x > max_pos.y:
+		direction = Vector2i(1, 0)
+	elif max_pos.x < max_pos.y:
+		direction = Vector2i(0, 1)
+	else:
+		var _left_right: float = Global.RNG.randf_range(-1, 1)
+		# I think this setup makes putting the boss tile further on the x more likely
+		direction = Vector2i(roundi(0 + _left_right), roundi(0 + _left_right))
+	
+	var new_pos = max_pos + direction
+	while check_neighbors(new_pos) == []:
+		print("NEW NEW POS NEIGHBORS")
+		new_pos -= Vector2i(1, 0)
+	var boss_tile: Node = add_specific_room(new_pos * Tile.Size, Global.BOSS_TILE_SCENE)
 	return
 
 func _ready() -> void:

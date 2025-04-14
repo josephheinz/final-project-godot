@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://br15hp0humr3x"]
+
+[ext_resource type="Script" uid="uid://67iw5tpy26sh" path="res://Scripts/health_bar.gd" id="1_4ln8h"]
+[ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="1_7jmb3"]
+[ext_resource type="PackedScene" uid="uid://db7etww061vm3" path="res://Scenes/cardHand.tscn" id="2_fe60u"]
+[ext_resource type="PackedScene" uid="uid://bg87en8xd0xy4" path="res://Scenes/Components/health_component.tscn" id="2_ubpar"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ln8h"]
+size = Vector2(200, 200)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe60u"]
+bg_color = Color(0.783523, 0.783523, 0.783523, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ln8h"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Gradient" id="Gradient_d5ln6"]
+colors = PackedColorArray(0.517184, 0.517184, 0.517184, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jmb3"]
+gradient = SubResource("Gradient_d5ln6")
+width = 200
+height = 200
+fill_to = Vector2(1, 1)
+
+[node name="Combat" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CombatPlayer" type="Sprite2D" parent="."]
+z_index = 1000
+position = Vector2(225, 458)
+texture = SubResource("PlaceholderTexture2D_4ln8h")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CombatPlayer" node_paths=PackedStringArray("HealthComponent")]
+custom_minimum_size = Vector2(200, 25)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_bottom = -123.0
+grow_horizontal = 2
+pivot_offset = Vector2(100, 25)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fe60u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ln8h")
+step = 1.0
+value = 76.0
+script = ExtResource("1_4ln8h")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="CombatPlayer" instance=ExtResource("2_ubpar")]
+
+[node name="CombatEnemy" type="Sprite2D" parent="."]
+z_index = 1000
+position = Vector2(1047, 458)
+texture = SubResource("PlaceholderTexture2D_4ln8h")
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="CombatEnemy" node_paths=PackedStringArray("HealthComponent")]
+custom_minimum_size = Vector2(200, 25)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_bottom = -119.0
+grow_horizontal = 2
+pivot_offset = Vector2(100, 25)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_fe60u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ln8h")
+max_value = 38.0
+step = 1.0
+value = 15.0
+script = ExtResource("1_4ln8h")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="CombatEnemy" instance=ExtResource("2_ubpar")]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Environment"]
+visible = false
+position = Vector2(-42, -23)
+scale = Vector2(6.4, 3.6)
+texture = SubResource("GradientTexture2D_7jmb3")
+centered = false
+
+[node name="Ground" type="Sprite2D" parent="Environment"]
+position = Vector2(640, 644)
+scale = Vector2(0.984615, 0.17552)
+texture = ExtResource("1_7jmb3")
+
+[node name="CardHand" parent="." instance=ExtResource("2_fe60u")]
