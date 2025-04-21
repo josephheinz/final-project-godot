@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyf3wl3gwivot"]
+[gd_scene load_steps=9 format=3 uid="uid://dyf3wl3gwivot"]
 
 [ext_resource type="Script" uid="uid://csfer17qgt0vs" path="res://Scenes/Cards/card.gd" id="1_s2ncq"]
+[ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="2_ws51j"]
+[ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="2_ylnsc"]
+[ext_resource type="Script" uid="uid://bab48y0gbkqa1" path="res://Scenes/Cards/hover_panel.gd" id="4_se2ob"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmcdd"]
 bg_color = Color(0.805282, 0.560442, 0.26328, 1)
@@ -14,16 +17,26 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="Resource" id="Resource_se2ob"]
+script = ExtResource("2_ylnsc")
+name = "ASDF"
+cardImage = "C:/Users/joheb41/Documents/final-project-godot/Sprites/wall.jpg"
+metadata/_custom_type_script = "uid://btwaipkpf15mh"
+
 [sub_resource type="LabelSettings" id="LabelSettings_0qqmn"]
 font_size = 22
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws51j"]
+bg_color = Color(0.552941, 0.372549, 0.145098, 1)
 
 [node name="Card" type="Panel"]
 custom_minimum_size = Vector2(150, 210)
 pivot_offset = Vector2(75, 210)
 theme_override_styles/panel = SubResource("StyleBoxFlat_gmcdd")
 script = ExtResource("1_s2ncq")
+data = SubResource("Resource_se2ob")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -33,13 +46,48 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -34.0
-offset_top = -15.5
+offset_top = -15.0
 offset_right = 34.0
-offset_bottom = 15.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Card 1"
 label_settings = SubResource("LabelSettings_0qqmn")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="Image Border" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.5
+offset_top = 12.5
+offset_right = 62.5
+offset_bottom = 87.5
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ws51j")
+
+[node name="Card Image" type="TextureRect" parent="Image Border"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ws51j")
+expand_mode = 1
+
+[node name="Hover Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_se2ob")
+
+[connection signal="mouse_entered" from="Hover Panel" to="Hover Panel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hover Panel" to="Hover Panel" method="_on_mouse_exited"]

@@ -5,10 +5,12 @@ const SIZE := Vector2(150, 210)
 
 @export var text: String
 @export var hovered: bool = false
+@export var data: CardData
+
 @onready var label: Label = $Label
 
 func _ready() -> void:
-	label.text = text
+	label.text = data.name
 
 func _on_mouse_entered() -> void:
 	hovered = true

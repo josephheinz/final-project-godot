@@ -56,7 +56,6 @@ func generate_dungeon(settings: GeneratorSettings) -> void:
 				place_boss_tile() # Too many tries will take too long
 				return
 			direction = directions[Global.RNG.randi_range( 0, len(directions) - 1 )]
-			print_debug("Trying to find a valid direction")
 			direction_attempts += 1
 			new_pos = current_pos + direction
 		
@@ -108,7 +107,6 @@ func place_boss_tile() -> void:
 	
 	var new_pos = max_pos + direction
 	while check_neighbors(new_pos) == []:
-		print("NEW NEW POS NEIGHBORS")
 		new_pos -= Vector2i(1, 0)
 	var boss_tile: Node = add_specific_room(new_pos * Tile.Size, Global.BOSS_TILE_SCENE)
 	return
@@ -134,7 +132,6 @@ func zoom_cam(cam_size: Vector2, floor_size: Vector2) -> void:
 	var ratio: Vector2 = Vector2(floor_size / cam_size)
 	var new_zoom: Vector2 = Vector2(max(ratio.x, ratio.y), max(ratio.x, ratio.y))
 	cam.zoom /= new_zoom
-	print(cam.zoom)
 
 func move_cam(max: Vector2, cam_size: Vector2) -> void:
 	var center: Vector2 = Vector2(max.x / 2 - minPadding, max.y / 2 - minPadding)
@@ -154,7 +151,6 @@ func center_dungeon() -> void:
 	var min: Vector2 = Vector2(0, 0)
 	var max: Vector2 = Vector2(max_x + minPadding, max_y + minPadding)
 	var floor_size: Vector2 = max - min
-	print(floor_size)
 	var cam_size: Vector2 = get_viewport_rect().size
 	
 	move_cam(floor_size, cam_size)
