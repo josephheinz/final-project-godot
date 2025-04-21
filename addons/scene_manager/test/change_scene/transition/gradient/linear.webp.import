@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7psks0nj648x"
-path="res://.godot/imported/Player.png-bca7649864896e87279b760c91d9ad54.ctex"
+uid="uid://cs1gac886e3fc"
+path="res://.godot/imported/linear.webp-9fcc0a536c528ac11df815dde0659f53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tiles/Player.png"
-dest_files=["res://.godot/imported/Player.png-bca7649864896e87279b760c91d9ad54.ctex"]
+source_file="res://addons/scene_manager/test/change_scene/transition/gradient/linear.webp"
+dest_files=["res://.godot/imported/linear.webp-9fcc0a536c528ac11df815dde0659f53.ctex"]
 
 [params]
 

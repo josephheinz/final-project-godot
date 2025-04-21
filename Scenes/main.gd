@@ -3,6 +3,8 @@ extends Node2D
 @export var settings: GeneratorSettings
 @export var minPadding: int = 50
 
+var player: Node
+
 @onready var cam: Camera2D = $MainCamera
 
 const directions: Array[Vector2i] = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP, Vector2i.DOWN]
@@ -115,8 +117,11 @@ func _ready() -> void:
 	# Fill the room type amounts array with zeros to start
 	room_type_amounts.resize(len(settings.roomMaxes))
 	room_type_amounts.fill(0)
-	
 	generate_dungeon(settings)
+	
+	player = Global.PLAYER.instantiate()
+	add_child(player)
+	
 	center_dungeon()
 
 func _process(_delta: float) -> void:

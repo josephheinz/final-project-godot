@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://duwlxdedlkq5b"]
+
+[ext_resource type="Script" uid="uid://dwe0eu3ygcq22" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
+[ext_resource type="Texture2D" uid="uid://7psks0nj648x" path="res://Sprites/Player.png" id="1_uvnfx"]
+[ext_resource type="PackedScene" uid="uid://dhjfvshrqq0m6" path="res://Scenes/Components/input_component.tscn" id="3_xpcdj"]
+[ext_resource type="PackedScene" uid="uid://b3ab4avhvtxho" path="res://Scenes/Components/movement_component.tscn" id="4_mtuoh"]
+[ext_resource type="Script" uid="uid://3s6bbncdbmcg" path="res://Resources/Scripts/health.gd" id="5_htcer"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("movement", "input", "health")]
+script = ExtResource("1_a3d8c")
+movement = NodePath("Movement Component")
+input = NodePath("Input Component")
+health = NodePath("Health")
+
+[node name="Player Sprite" type="Sprite2D" parent="."]
+position = Vector2(50, 50)
+scale = Vector2(0.142, 0.142)
+texture = ExtResource("1_uvnfx")
+
+[node name="Input Component" parent="." instance=ExtResource("3_xpcdj")]
+
+[node name="Movement Component" parent="." instance=ExtResource("4_mtuoh")]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_htcer")
+maxHealth = 10
+_health = 10
+metadata/_custom_type_script = "uid://3s6bbncdbmcg"
+
+[connection signal="move" from="Movement Component" to="." method="_on_movement_component_move"]

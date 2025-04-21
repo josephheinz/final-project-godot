@@ -1,5 +1,10 @@
 class_name Health extends Node
 
+var parent: Node
+
+func _ready() -> void:
+	parent = get_parent()
+
 @export_group("Settings")
 @export var maxHealth: int
 @export var _health: int:

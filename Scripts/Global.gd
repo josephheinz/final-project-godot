@@ -13,6 +13,6 @@ const TILE_REFS: Array = [
 const START_TILE_SCENE: PackedScene = preload("res://Tiles/Scenes/startTile.tscn")
 const BOSS_TILE_SCENE: PackedScene = preload("res://Tiles/Scenes/bossTile.tscn")
 
-#const PLAYER: PackedScene
+const PLAYER: PackedScene = preload("res://Scenes/Player/player.tscn")
 
 var RoomsMap: Dictionary[Vector2i, Node] = {}
