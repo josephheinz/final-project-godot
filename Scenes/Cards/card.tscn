@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://csfer17qgt0vs" path="res://Scenes/Cards/card.gd" id="1_s2ncq"]
 [ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="2_ws51j"]
 [ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="2_ylnsc"]
-[ext_resource type="Script" uid="uid://bab48y0gbkqa1" path="res://Scenes/Cards/hover_panel.gd" id="4_se2ob"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmcdd"]
 bg_color = Color(0.805282, 0.560442, 0.26328, 1)
@@ -30,6 +29,8 @@ shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws51j"]
 bg_color = Color(0.552941, 0.372549, 0.145098, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylnsc"]
 
 [node name="Card" type="Panel"]
 custom_minimum_size = Vector2(150, 210)
@@ -87,7 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_se2ob")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ylnsc")
 
-[connection signal="mouse_entered" from="Hover Panel" to="Hover Panel" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Hover Panel" to="Hover Panel" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hover Panel" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hover Panel" to="." method="_on_mouse_exited"]
