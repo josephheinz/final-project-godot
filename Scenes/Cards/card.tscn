@@ -18,7 +18,7 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="Resource" id="Resource_se2ob"]
 script = ExtResource("2_ylnsc")
-name = "ASDF"
+name = "Deal 1 DMG"
 cardImage = "C:/Users/joheb41/Documents/final-project-godot/Sprites/wall.jpg"
 metadata/_custom_type_script = "uid://btwaipkpf15mh"
 
@@ -90,5 +90,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ylnsc")
 
+[connection signal="gui_input" from="Hover Panel" to="." method="_on_hover_panel_gui_input"]
 [connection signal="mouse_entered" from="Hover Panel" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Hover Panel" to="." method="_on_mouse_exited"]

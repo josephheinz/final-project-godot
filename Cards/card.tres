@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_h3htv")
-Name = ""
+name = ""
+cardImage = null

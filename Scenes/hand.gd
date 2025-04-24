@@ -12,6 +12,8 @@ const CARD = preload("res://Scenes/Cards/card.tscn")
 @export var y_max: float = -15
 @export var hover_amount: float = 15
 
+@onready var selectedCard: Marker2D = get_parent().get_node("Selected Card")
+
 func draw() -> void:
 	var new_card := CARD.instantiate()
 	new_card.text = "Card %s" % (get_child_count() + 1)
@@ -29,6 +31,7 @@ func discard() -> void:
 
 func _update_cards() -> void:
 	var cards := get_child_count()
+	print(cards)
 	var all_cards_size: float = cards * Card.SIZE.x + x_sep * (cards - 1)
 	var final_x_sep: float = x_sep
 	
@@ -40,6 +43,8 @@ func _update_cards() -> void:
 	
 	for i in cards:
 		var card := get_child(i)
+		if card.get_parent() != self:
+			continue
 		var tween: Tween = create_tween()
 		var y_multiplier := hand_curve.sample(1.0 / (cards - 1) * i)
 		var rot_multiplier := rotation_curve.sample(1.0 / (cards - 1) * i)
@@ -81,3 +86,16 @@ func _ready() -> void:
 	draw()
 	draw()
 	draw()
+
+func selectCard(card: Node) -> void:
+	if selectedCard.get_child_count() > 0:
+		return
+	#reparent selected card and reposition it
+	card.get_node("Hover Panel").disconnect("mouse_exited", card._on_mouse_exited)
+	card.reparent(selectedCard, false)
+	
+	card.hovered = false
+	card.position = -card.SIZE / 2
+	card.rotation_degrees = 0
+	
+	_update_cards()

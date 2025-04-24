@@ -123,7 +123,6 @@ func _ready() -> void:
 	center_dungeon()
 
 func _process(_delta: float) -> void:
-	handleInputs()
 	if Input.is_action_just_pressed("ui_accept"):
 		Global.RoomsMap = {}
 		get_tree().reload_current_scene()
@@ -156,18 +155,3 @@ func center_dungeon() -> void:
 	move_cam(floor_size, cam_size)
 	if floor_size.x > cam_size.x * cam.zoom.x or floor_size.y > cam_size.y * cam.zoom.y:
 		zoom_cam(cam_size, floor_size)
-
-func handleInputs() -> void:
-	return
-	if Input.is_action_just_pressed("ui_left"):
-		var moveVec = Vector2i(-1, 0)
-		#player.Move(moveVec)
-	if Input.is_action_just_pressed("ui_right"):
-		var moveVec = Vector2i(1, 0)
-		#player.Move(moveVec)
-	if Input.is_action_just_pressed("ui_up"):
-		var moveVec = Vector2i(0, -1)
-		#player.Move(moveVec)
-	if Input.is_action_just_pressed("ui_down"):
-		var moveVec = Vector2i(0, 1)
-		#player.Move(moveVec)

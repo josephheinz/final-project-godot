@@ -7,18 +7,24 @@ func _ready() -> void:
 
 @export_group("Settings")
 @export var maxHealth: int
-@export var _health: int:
+@export var health: int:
 	set(value):
-		_health = clamp(value, 0, maxHealth)
-		if _health <= 0:
-			_dead = true
+		health = clamp(value, 0, maxHealth)
+		if health <= 0:
+			dead = true
 	get:
-		return _health
-@export var _dead: bool = false:
+		return health
+@export var dead: bool = false:
 	set(value):
-		if _health > 0:
-			_dead = false
+		if health > 0:
+			dead = false
 		else:
-			_dead = value
+			dead = value
 	get:
-		return _dead
+		return dead
+
+func damage(amount: int) -> void:
+	health -= amount
+
+func heal(amount: int) -> void:
+	health += amount

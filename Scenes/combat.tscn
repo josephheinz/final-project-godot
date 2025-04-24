@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://br15hp0humr3x"]
+[gd_scene load_steps=11 format=3 uid="uid://br15hp0humr3x"]
 
 [ext_resource type="Script" uid="uid://67iw5tpy26sh" path="res://Scripts/health_bar.gd" id="1_4ln8h"]
 [ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="1_7jmb3"]
 [ext_resource type="PackedScene" uid="uid://db7etww061vm3" path="res://Scenes/cardHand.tscn" id="2_fe60u"]
 [ext_resource type="PackedScene" uid="uid://bg87en8xd0xy4" path="res://Scenes/Components/health_component.tscn" id="2_ubpar"]
+[ext_resource type="PackedScene" uid="uid://c8jud70tdwcd2" path="res://Scenes/combat_handler.tscn" id="5_ut0kg"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ln8h"]
 size = Vector2(200, 200)
@@ -59,7 +60,10 @@ offset_top = -150.0
 offset_bottom = -123.0
 grow_horizontal = 2
 pivot_offset = Vector2(100, 25)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
 theme_override_styles/background = SubResource("StyleBoxFlat_fe60u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4ln8h")
 step = 1.0
@@ -68,6 +72,8 @@ script = ExtResource("1_4ln8h")
 HealthComponent = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="CombatPlayer" instance=ExtResource("2_ubpar")]
+maxHealth = 100
+health = 100
 
 [node name="CombatEnemy" type="Sprite2D" parent="."]
 z_index = 1000
@@ -84,7 +90,10 @@ offset_top = -150.0
 offset_bottom = -119.0
 grow_horizontal = 2
 pivot_offset = Vector2(100, 25)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
 theme_override_styles/background = SubResource("StyleBoxFlat_fe60u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4ln8h")
 max_value = 38.0
@@ -94,6 +103,8 @@ script = ExtResource("1_4ln8h")
 HealthComponent = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="CombatEnemy" instance=ExtResource("2_ubpar")]
+maxHealth = 100
+health = 100
 
 [node name="Environment" type="Node" parent="."]
 
@@ -110,3 +121,7 @@ scale = Vector2(0.984615, 0.17552)
 texture = ExtResource("1_7jmb3")
 
 [node name="CardHand" parent="." instance=ExtResource("2_fe60u")]
+
+[node name="Combat Handler" parent="." node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_ut0kg")]
+player = NodePath("../CombatPlayer")
+enemy = NodePath("../CombatEnemy")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://db7etww061vm3"]
+[gd_scene load_steps=5 format=3 uid="uid://db7etww061vm3"]
 
 [ext_resource type="Script" uid="uid://dg2fhxy2a7j7g" path="res://Scenes/hand.gd" id="1_5g5vb"]
+[ext_resource type="Script" uid="uid://b31h5ef3nyefs" path="res://Scenes/selected_card.gd" id="2_ogg3k"]
 
 [sub_resource type="Curve" id="Curve_5g5vb"]
 _data = [Vector2(0, 0.25), 0.0, 4.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.25), -4.0, 0.0, 0, 0]
@@ -12,6 +13,10 @@ _data = [Vector2(0, -1), 0.0, 2.5, 0, 0, Vector2(1, 1), 2.5, 0.0, 0, 0]
 point_count = 2
 
 [node name="CardHand" type="CanvasLayer"]
+
+[node name="Selected Card" type="Marker2D" parent="."]
+position = Vector2(640, 360)
+script = ExtResource("2_ogg3k")
 
 [node name="Hand" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(675, 200)
