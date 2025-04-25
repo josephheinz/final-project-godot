@@ -31,7 +31,6 @@ func discard() -> void:
 
 func _update_cards() -> void:
 	var cards := get_child_count()
-	print(cards)
 	var all_cards_size: float = cards * Card.SIZE.x + x_sep * (cards - 1)
 	var final_x_sep: float = x_sep
 	
@@ -56,7 +55,7 @@ func _update_cards() -> void:
 		var final_x: float = offset + Card.SIZE.x * i + final_x_sep * i
 		var final_y: float = y_min + y_max * y_multiplier
 		
-		tween.tween_property(card, "position", Vector2(final_x, final_y), 0.1).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(card, "position", Vector2(final_x, final_y), 0.15).set_trans(Tween.TRANS_QUAD)
 		#tween.parallel().tween_property(card, "rotation_degrees", max_rotation_degrees * rot_multiplier, 0.1).set_trans(Tween.TRANS_QUART)
 		
 		#card.position = Vector2(final_x, final_y)
@@ -92,10 +91,16 @@ func selectCard(card: Node) -> void:
 		return
 	#reparent selected card and reposition it
 	card.get_node("Hover Panel").disconnect("mouse_exited", card._on_mouse_exited)
+	card.get_node("Hover Panel").disconnect("mouse_entered", card._on_mouse_entered)
 	card.reparent(selectedCard, false)
 	
 	card.hovered = false
 	card.position = -card.SIZE / 2
 	card.rotation_degrees = 0
+	
+	var selectPath: SelectionPath = SelectionPath.new()
+	selectPath.position = card.SIZE / 2
+	card.add_child(selectPath)
+	
 	
 	_update_cards()
