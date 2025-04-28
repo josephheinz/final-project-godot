@@ -5,6 +5,7 @@ const DEFAULT_SIZE: Vector2 = Vector2(500, 500)
 @export var enabled: bool = true
 
 var selecting: bool = false
+var selectedObject: Node2D = null
 
 func _ready() -> void:
 	visible = true if enabled else false
@@ -18,6 +19,7 @@ func _process(_delta: float) -> void:
 
 func select(object: Sprite2D) -> void:
 	selecting = true
+	selectedObject = object
 	var obj_size: Vector2 = object.texture.get_size() * object.scale	
 	var goal_size = obj_size + Vector2(20, 20)
 	
@@ -26,6 +28,7 @@ func select(object: Sprite2D) -> void:
 
 func deselect() -> void:
 	selecting = false
+	selectedObject = null
 
 func try_get_hover() -> void:
 	var mouse_pos: Vector2 = Vector2(get_global_mouse_position().x, get_global_mouse_position().y) 

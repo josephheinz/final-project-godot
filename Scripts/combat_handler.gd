@@ -12,6 +12,8 @@ var enemy_health_bar: HealthBar
 var player_health: Health
 var enemy_health: Health
 
+@onready var cursor = get_parent().get_node("Cursor")
+
 func _ready() -> void:
 	print("Starting")
 	player_health_bar = player.get_node("PlayerHealthBar")
@@ -29,3 +31,8 @@ func combatTick() -> void:
 
 func _process(_delta: float) -> void:
 	combatTick()
+
+func _input(event) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == 1 and cursor.selecting:
+			print(cursor.selectedObject)

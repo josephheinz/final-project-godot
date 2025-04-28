@@ -13,6 +13,9 @@ const CARD = preload("res://Scenes/Cards/card.tscn")
 @export var hover_amount: float = 15
 
 @onready var selectedCard: Marker2D = get_parent().get_node("Selected Card")
+# Goes from cardhand to combathandler to cursor
+@onready var cursor = get_parent().get_parent().get_node("Cursor")
+
 
 func draw() -> void:
 	var new_card := CARD.instantiate()
@@ -102,5 +105,6 @@ func selectCard(card: Node) -> void:
 	#selectPath.position = card.SIZE / 2
 	#card.add_child(selectPath)
 	
+	cursor.enabled = true
 	
 	_update_cards()
