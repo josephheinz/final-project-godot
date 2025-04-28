@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://br15hp0humr3x"]
+[gd_scene load_steps=14 format=3 uid="uid://br15hp0humr3x"]
 
 [ext_resource type="Script" uid="uid://67iw5tpy26sh" path="res://Scripts/health_bar.gd" id="1_4ln8h"]
 [ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="1_7jmb3"]
 [ext_resource type="PackedScene" uid="uid://db7etww061vm3" path="res://Scenes/cardHand.tscn" id="2_fe60u"]
 [ext_resource type="PackedScene" uid="uid://bg87en8xd0xy4" path="res://Scenes/Components/health_component.tscn" id="2_ubpar"]
 [ext_resource type="PackedScene" uid="uid://c8jud70tdwcd2" path="res://Scenes/combat_handler.tscn" id="5_ut0kg"]
+[ext_resource type="Texture2D" uid="uid://dclegvm2ukieo" path="res://Sprites/Artboard 1.png" id="6_yt1oa"]
+[ext_resource type="Script" uid="uid://ckhmmn31rt71j" path="res://Scripts/cursor.gd" id="7_3w34b"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ln8h"]
 size = Vector2(200, 200)
@@ -30,6 +32,9 @@ border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w34b"]
+size = Vector2(200, 200)
 
 [sub_resource type="Gradient" id="Gradient_d5ln6"]
 colors = PackedColorArray(0.517184, 0.517184, 0.517184, 1, 1, 1, 1, 1)
@@ -75,6 +80,11 @@ HealthComponent = NodePath("../HealthComponent")
 maxHealth = 100
 health = 100
 
+[node name="Area2D" type="Area2D" parent="CombatPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatPlayer/Area2D"]
+shape = SubResource("RectangleShape2D_3w34b")
+
 [node name="CombatEnemy" type="Sprite2D" parent="."]
 z_index = 1000
 position = Vector2(1047, 458)
@@ -106,6 +116,11 @@ HealthComponent = NodePath("../HealthComponent")
 maxHealth = 100
 health = 100
 
+[node name="Area2D" type="Area2D" parent="CombatEnemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatEnemy/Area2D"]
+shape = SubResource("RectangleShape2D_3w34b")
+
 [node name="Environment" type="Node" parent="."]
 
 [node name="Background" type="Sprite2D" parent="Environment"]
@@ -125,3 +140,10 @@ texture = ExtResource("1_7jmb3")
 [node name="Combat Handler" parent="." node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_ut0kg")]
 player = NodePath("../CombatPlayer")
 enemy = NodePath("../CombatEnemy")
+
+[node name="Cursor" type="Sprite2D" parent="."]
+z_index = 1000
+position = Vector2(643, 356)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_yt1oa")
+script = ExtResource("7_3w34b")

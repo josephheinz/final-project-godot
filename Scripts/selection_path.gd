@@ -20,8 +20,9 @@ func _enter_tree() -> void:
 	self.curve.set_point_in(1, tangents[1])
 
 func _process(_delta: float) -> void:
-	var mousePos = get_global_mouse_position() - self.global_position
-	tangents[0] = Vector2(mousePos.x/5, 0)
+	var mousePos = get_global_mouse_position() - self.position
+	tangents[0] = Vector2(mousePos.x/2, 0)
+	tangents[1] = Vector2(0, -mousePos.y/2)
 	
 	self.curve.set_point_position(0, startPoint)
 	self.curve.set_point_position(1, mousePos)

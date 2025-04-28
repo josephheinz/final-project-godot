@@ -15,4 +15,3 @@ func Move(moveVec: Vector2i) -> bool:
 		return true
 	else:
 		return false
-	return true

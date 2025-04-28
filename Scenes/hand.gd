@@ -98,9 +98,9 @@ func selectCard(card: Node) -> void:
 	card.position = -card.SIZE / 2
 	card.rotation_degrees = 0
 	
-	var selectPath: SelectionPath = SelectionPath.new()
-	selectPath.position = card.SIZE / 2
-	card.add_child(selectPath)
+	#var selectPath: SelectionPath = SelectionPath.new()
+	#selectPath.position = card.SIZE / 2
+	#card.add_child(selectPath)
 	
 	
 	_update_cards()

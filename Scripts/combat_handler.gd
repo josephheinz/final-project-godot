@@ -27,5 +27,5 @@ func combatTick() -> void:
 	player_health_bar.value = player_health.health
 	enemy_health_bar.value = enemy_health.health
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	combatTick()
