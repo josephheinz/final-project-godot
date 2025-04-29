@@ -164,3 +164,12 @@ offset_top = 539.0
 offset_right = 1259.0
 offset_bottom = 562.0
 text = "Discard: 0"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 17.0
+offset_top = 583.0
+offset_right = 211.0
+offset_bottom = 614.0
+text = "DRAWDRAWDRAWCARD"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="Combat Handler" method="_on_button_pressed"]
