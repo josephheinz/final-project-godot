@@ -148,3 +148,19 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_yt1oa")
 script = ExtResource("7_3w34b")
 enabled = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Deck Label" type="Label" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 533.0
+offset_right = 70.0
+offset_bottom = 556.0
+text = "Deck: 0"
+
+[node name="Discard Label" type="Label" parent="CanvasLayer"]
+offset_left = 1183.0
+offset_top = 539.0
+offset_right = 1259.0
+offset_bottom = 562.0
+text = "Discard: 0"

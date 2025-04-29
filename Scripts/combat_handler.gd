@@ -13,6 +13,7 @@ var player_health: Health
 var enemy_health: Health
 
 @onready var cursor = get_parent().get_node("Cursor")
+@onready var hand = get_parent().get_node("CardHand/Hand")
 
 func _ready() -> void:
 	print("Starting")
@@ -28,6 +29,9 @@ func _ready() -> void:
 func combatTick() -> void:
 	player_health_bar.value = player_health.health
 	enemy_health_bar.value = enemy_health.health
+	
+	get_parent().get_node("CanvasLayer/Deck Label").text = "Deck: " + str(len(Global.Cards.Deck))
+	get_parent().get_node("CanvasLayer/Discard Label").text = "Discard: " + str(len(Global.Cards.Discard))
 
 func _process(_delta: float) -> void:
 	combatTick()
@@ -35,4 +39,4 @@ func _process(_delta: float) -> void:
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == 1 and cursor.selecting:
-			print(cursor.selectedObject)
+			hand.useCard()

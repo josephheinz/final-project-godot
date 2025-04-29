@@ -17,3 +17,10 @@ const BOSS_TILE_SCENE: PackedScene = preload("res://Tiles/Scenes/bossTile.tscn")
 const PLAYER: PackedScene = preload("res://Scenes/Player/player.tscn")
 
 var RoomsMap: Dictionary[Vector2i, Node] = {}
+
+var Cards: Dictionary[String, Array] = {
+	"Deck": ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres"],
+	"Hand": [],
+	"Discard": [],
+	"Selected": []
+}

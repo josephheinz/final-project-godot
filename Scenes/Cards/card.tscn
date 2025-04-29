@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyf3wl3gwivot"]
+[gd_scene load_steps=7 format=3 uid="uid://dyf3wl3gwivot"]
 
 [ext_resource type="Script" uid="uid://csfer17qgt0vs" path="res://Scenes/Cards/card.gd" id="1_s2ncq"]
 [ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="2_ws51j"]
-[ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="2_ylnsc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmcdd"]
 bg_color = Color(0.805282, 0.560442, 0.26328, 1)
@@ -15,13 +14,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-
-[sub_resource type="Resource" id="Resource_se2ob"]
-script = ExtResource("2_ylnsc")
-name = "Deal 1 DMG"
-cardImage = "C:/Users/joheb41/Documents/final-project-godot/Sprites/wall.jpg"
-allowedTargets = Array[int]([1])
-metadata/_custom_type_script = "uid://btwaipkpf15mh"
 
 [sub_resource type="LabelSettings" id="LabelSettings_0qqmn"]
 font_size = 22
@@ -39,7 +31,6 @@ custom_minimum_size = Vector2(150, 210)
 pivot_offset = Vector2(75, 210)
 theme_override_styles/panel = SubResource("StyleBoxFlat_gmcdd")
 script = ExtResource("1_s2ncq")
-data = SubResource("Resource_se2ob")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

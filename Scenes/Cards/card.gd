@@ -8,9 +8,11 @@ const SIZE := Vector2(150, 210)
 @export var data: CardData
 
 @onready var label: Label = $Label
+@onready var card_image: TextureRect = $"Image Border/Card Image"
 
 func _ready() -> void:
 	label.text = data.name
+	card_image.texture = load(data.cardImage)
 
 func _on_mouse_entered() -> void:
 	hovered = true
@@ -24,5 +26,5 @@ func _on_mouse_exited() -> void:
 
 func _on_hover_panel_gui_input(event: InputEvent) -> void:
 	if is_instance_of(event, InputEventMouseButton):
-		if event.pressed == true:
+		if event.pressed == true and get_parent() is not Window:
 			get_parent().selectCard(self)

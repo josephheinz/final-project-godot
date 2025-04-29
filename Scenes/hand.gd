@@ -16,18 +16,21 @@ const CARD = preload("res://Scenes/Cards/card.tscn")
 # Goes from cardhand to combathandler to cursor
 @onready var cursor = get_parent().get_parent().get_node("Cursor")
 
-
 func draw() -> void:
+	var card_res = Global.Cards.Deck[-1]
+	Global.Cards.Hand.append(card_res)
+	Global.Cards.Deck.pop_back()
 	var new_card := CARD.instantiate()
-	new_card.text = "Card %s" % (get_child_count() + 1)
+	new_card.data = load(card_res)
 	add_child(new_card)
 	_update_cards()
 	
 func discard() -> void:
-	if get_child_count() < 1:
+	if selectedCard.get_child_count() < 1:
 		return
 	
-	var child := get_child(-1)
+	var child := selectedCard.get_child(0)
+	
 	child.reparent(get_tree().root)
 	child.queue_free()
 	_update_cards()
@@ -84,6 +87,7 @@ func _update_cards() -> void:
 			card.z_index = 1000
 
 func _ready() -> void:
+	Global.Cards.Deck.shuffle()
 	draw()
 	draw()
 	draw()
@@ -97,6 +101,9 @@ func selectCard(card: Node) -> void:
 	card.get_node("Hover Panel").disconnect("mouse_entered", card._on_mouse_entered)
 	card.reparent(selectedCard, false)
 	
+	Global.Cards.Selected.append(Global.Cards.Hand[card.get_index()])
+	Global.Cards.Hand.pop_at(card.get_index())
+	
 	card.hovered = false
 	card.position = -card.SIZE / 2
 	card.rotation_degrees = 0
@@ -108,3 +115,15 @@ func selectCard(card: Node) -> void:
 	cursor.enabled = true
 	
 	_update_cards()
+
+func useCard() -> void:
+	if len(selectedCard.get_children()) < 1:
+		return
+	
+	var card := selectedCard.get_child(0)
+	
+	card.data.Use()
+	Global.Cards.Discard.append(Global.Cards.Selected[-1])
+	Global.Cards.Selected.pop_back()
+	discard()
+	

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://bunuyhd5jp47y"]
+
+[ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="1_m0f7l"]
+
+[resource]
+script = ExtResource("1_m0f7l")
+name = "Block"
+cardImage = "C:/Users/joheb41/Documents/final-project-godot/Sprites/shield.jpg"
+allowedTargets = Array[int]([0])
+metadata/_custom_type_script = "uid://btwaipkpf15mh"
