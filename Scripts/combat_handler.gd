@@ -33,8 +33,13 @@ func combatTick() -> void:
 	get_parent().get_node("CanvasLayer/Deck Label").text = "Deck: " + str(len(Global.Cards.Deck))
 	get_parent().get_node("CanvasLayer/Discard Label").text = "Discard: " + str(len(Global.Cards.Discard))
 	
-	player.get_node("BlockIcon/BlockLabel").text = str(player.get_node("HealthComponent").block)
-	enemy.get_node("BlockIcon/BlockLabel").text = str(enemy.get_node("HealthComponent").block)
+	player.get_node("BlockIcon/BlockLabel").text = str(player_health.block)
+	enemy.get_node("BlockIcon/BlockLabel").text = str(enemy_health.block)
+	
+	if enemy_health.dead:
+		SceneManager.change_scene_to_file("res://Scenes/main.tscn")
+	if player_health.dead:
+		get_tree().free()
 
 func _process(_delta: float) -> void:
 	combatTick()

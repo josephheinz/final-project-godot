@@ -112,6 +112,9 @@ func place_boss_tile() -> void:
 	return
 
 func _ready() -> void:
+	if len(Global.RoomsMap) > 0:
+		for room in Global.RoomsMap:
+			pass
 	# Fill the room type amounts array with zeros to start
 	room_type_amounts.resize(len(settings.roomMaxes))
 	room_type_amounts.fill(0)

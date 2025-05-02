@@ -143,8 +143,8 @@ script = ExtResource("1_4ln8h")
 HealthComponent = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="CombatEnemy" instance=ExtResource("2_ubpar")]
-maxHealth = 10
-health = 10
+maxHealth = 4
+health = 4
 target_type = 1
 
 [node name="Area2D" type="Area2D" parent="CombatEnemy"]
