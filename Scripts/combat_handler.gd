@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == 1 and cursor.selecting:
-			hand.useCard()
+			hand.useCard(cursor.selectedObject)
 
 
 func _on_button_pressed() -> void:

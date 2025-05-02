@@ -17,6 +17,8 @@ const CARD = preload("res://Scenes/Cards/card.tscn")
 @onready var cursor = get_parent().get_parent().get_node("Cursor")
 
 func draw() -> void:
+	if len(Global.Cards.Deck) <= 0:
+		return
 	var card_res = Global.Cards.Deck[-1]
 	Global.Cards.Hand.append(card_res)
 	Global.Cards.Deck.pop_back()
@@ -117,14 +119,15 @@ func selectCard(card: Node) -> void:
 	
 	_update_cards()
 
-func useCard() -> void:
+func useCard(target: Node) -> void:
 	if len(selectedCard.get_children()) < 1:
 		return
 	
 	var card := selectedCard.get_child(0)
 	
-	card.data.Use()
+	card.data.Use(target)
 	cursor.selectedCard = null
+	cursor.enabled = false
 	Global.Cards.Discard.append(Global.Cards.Selected[-1])
 	Global.Cards.Selected.pop_back()
 	discard()

@@ -7,4 +7,6 @@ script = ExtResource("1_m0f7l")
 name = "Block"
 cardImage = "C:/Users/joheb41/Documents/final-project-godot/Sprites/shield.jpg"
 allowedTargets = Array[int]([0])
+useType = 2
+useAmount = 2
 metadata/_custom_type_script = "uid://btwaipkpf15mh"
