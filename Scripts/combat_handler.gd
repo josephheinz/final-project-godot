@@ -32,6 +32,9 @@ func combatTick() -> void:
 	
 	get_parent().get_node("CanvasLayer/Deck Label").text = "Deck: " + str(len(Global.Cards.Deck))
 	get_parent().get_node("CanvasLayer/Discard Label").text = "Discard: " + str(len(Global.Cards.Discard))
+	
+	player.get_node("BlockIcon/BlockLabel").text = str(player.get_node("HealthComponent").block)
+	enemy.get_node("BlockIcon/BlockLabel").text = str(enemy.get_node("HealthComponent").block)
 
 func _process(_delta: float) -> void:
 	combatTick()

@@ -89,7 +89,8 @@ func _update_cards() -> void:
 			card.z_index = 1000
 
 func _ready() -> void:
-	Global.Cards.Deck.shuffle()
+	for i in range(20):
+		Global.Cards.Deck.shuffle()
 	draw()
 	draw()
 	draw()

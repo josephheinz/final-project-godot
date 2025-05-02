@@ -19,7 +19,7 @@ const PLAYER: PackedScene = preload("res://Scenes/Player/player.tscn")
 var RoomsMap: Dictionary[Vector2i, Node] = {}
 
 var Cards: Dictionary[String, Array] = {
-	"Deck": ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres"],
+	"Deck": ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres"],
 	"Hand": [],
 	"Discard": [],
 	"Selected": []
