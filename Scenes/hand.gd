@@ -113,6 +113,7 @@ func selectCard(card: Node) -> void:
 	#card.add_child(selectPath)
 	
 	cursor.enabled = true
+	cursor.selectedCard = card
 	
 	_update_cards()
 
@@ -123,6 +124,7 @@ func useCard() -> void:
 	var card := selectedCard.get_child(0)
 	
 	card.data.Use()
+	cursor.selectedCard = null
 	Global.Cards.Discard.append(Global.Cards.Selected[-1])
 	Global.Cards.Selected.pop_back()
 	discard()

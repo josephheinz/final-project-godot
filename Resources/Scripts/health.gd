@@ -22,6 +22,7 @@ func _ready() -> void:
 			dead = value
 	get:
 		return dead
+@export var target_type: CardData.TARGET_TYPES
 
 func damage(amount: int) -> void:
 	health -= amount

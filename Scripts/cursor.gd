@@ -6,6 +6,7 @@ const DEFAULT_SIZE: Vector2 = Vector2(500, 500)
 
 var selecting: bool = false
 var selectedObject: Node2D = null
+var selectedCard = null
 
 func _ready() -> void:
 	visible = true if enabled else false
@@ -43,7 +44,9 @@ func try_get_hover() -> void:
 	var result = space.intersect_point(parameters, 1)
 	
 	for hit in result:
-		if hit.collider is Area2D:
-			select(hit.collider.get_parent())
+		if selectedCard:
+			var area_target_type = hit.collider.get_parent().get_node("HealthComponent").target_type
+			if hit.collider is Area2D and selectedCard.data.allowedTargets.has(area_target_type):
+				select(hit.collider.get_parent())
 	if len(result) < 1:
 		deselect()
