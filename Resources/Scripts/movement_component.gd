@@ -11,6 +11,8 @@ func Move(moveVec: Vector2i) -> bool:
 	var tryMovePos: Vector2i = playerTilePosition + moveVec
 	if Global.RoomsMap.has(tryMovePos):
 		parent.position = tryMovePos * Tile.Size
+		if parent.name == "Player":
+			Global.State.player.pos = Vector2(parent.position)
 		move.emit()
 		return true
 	else:

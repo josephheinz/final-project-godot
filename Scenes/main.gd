@@ -11,13 +11,15 @@ const directions: Array[Vector2i] = [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP,
 
 var room_type_amounts: Array[int] = []
 
-func add_room(_position: Vector2i, type: Global.TILE_TYPES) -> Node:
+func add_room(_position: Vector2i, type: Global.TILE_TYPES, update_state: bool = true) -> Node:
 	var room = Global.TILE_REFS[type].instantiate()
 	room.position = _position
 	add_child(room)
 	
 	var tile_pos: Vector2i = Vector2i( room.position / Vector2(Tile.Size) )
 	Global.RoomsMap[tile_pos] = room
+	if update_state:
+		Global.State.dungeon[tile_pos] = Global.TILE_REFS[type]
 	return room
 	
 # Bounds is a rectangle
@@ -30,13 +32,15 @@ func in_bounds(_position: Vector2i, bounds: Vector4i) -> bool:
 		return false
 	return true
 	
-func add_specific_room(_position: Vector2i, room_scene: PackedScene) -> Node:
+func add_specific_room(_position: Vector2i, room_scene: PackedScene, update_state: bool = true) -> Node:
 	var room = room_scene.instantiate()
 	room.position = _position
 	add_child(room)
 	
 	var tile_pos: Vector2i = Vector2i( room.position / Vector2(Tile.Size) )
 	Global.RoomsMap[tile_pos] = room
+	if update_state:
+		Global.State.dungeon[tile_pos] = room_scene
 	return room
 
 func generate_dungeon(_settings: GeneratorSettings) -> void:
@@ -114,7 +118,9 @@ func place_boss_tile() -> void:
 func _ready() -> void:
 	if len(Global.RoomsMap) > 0:
 		for room in Global.RoomsMap:
-			pass
+			#add_specific_room(room * Tile.Size, Global.RoomsMap[room])
+			load_dungeon()
+			return
 	# Fill the room type amounts array with zeros to start
 	room_type_amounts.resize(len(settings.roomMaxes))
 	room_type_amounts.fill(0)
@@ -158,3 +164,12 @@ func center_dungeon() -> void:
 	move_cam(floor_size)
 	if floor_size.x > cam_size.x * cam.zoom.x or floor_size.y > cam_size.y * cam.zoom.y:
 		zoom_cam(cam_size, floor_size)
+
+func load_dungeon() -> void:
+	Global.RoomsMap = {}
+	for room in Global.State.dungeon:
+		var _room = add_specific_room(room * Tile.Size, Global.State.dungeon[room], false)
+	
+	player = Global.PLAYER.instantiate()
+	player.position = Global.State.player.pos
+	add_child(player)

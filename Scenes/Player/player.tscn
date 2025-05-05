@@ -24,7 +24,6 @@ texture = ExtResource("1_uvnfx")
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_htcer")
 maxHealth = 10
-_health = 10
 metadata/_custom_type_script = "uid://3s6bbncdbmcg"
 
 [connection signal="move" from="Movement Component" to="." method="_on_movement_component_move"]

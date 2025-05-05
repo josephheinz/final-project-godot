@@ -18,6 +18,13 @@ const PLAYER: PackedScene = preload("res://Scenes/Player/player.tscn")
 
 var RoomsMap: Dictionary[Vector2i, Node] = {}
 
+var State: Dictionary = {
+	"player": {
+		"pos": Vector2(0, 0)
+	},
+	"dungeon": {}
+}
+
 var Cards: Dictionary[String, Array] = {
 	"Deck": ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres"],
 	"Hand": [],
