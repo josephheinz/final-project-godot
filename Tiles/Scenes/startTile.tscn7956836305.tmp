@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://blfgq8g0rbjtc"]
+
+[ext_resource type="Script" uid="uid://by4ob8gb7renl" path="res://Tiles/Scripts/start_tile.gd" id="1_esvmo"]
+[ext_resource type="Texture2D" uid="uid://byh86n014bv3f" path="res://Sprites/Tiles/star-circle.png" id="2_cvkvb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxm1o"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[node name="StartTile" type="Node2D"]
+script = ExtResource("1_esvmo")
+
+[node name="Background" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oxm1o")
+
+[node name="Start Circle" type="Sprite2D" parent="Background"]
+position = Vector2(50, 50)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cvkvb")

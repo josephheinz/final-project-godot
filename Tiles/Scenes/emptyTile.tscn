@@ -18,3 +18,8 @@ custom_minimum_size = Vector2(100, 100)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_qu6ha")
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

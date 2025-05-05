@@ -22,7 +22,8 @@ var State: Dictionary = {
 	"player": {
 		"pos": Vector2(0, 0)
 	},
-	"dungeon": {}
+	"dungeon": {},
+	"visited": [Vector2i(0, 0)]
 }
 
 var Cards: Dictionary[String, Array] = {

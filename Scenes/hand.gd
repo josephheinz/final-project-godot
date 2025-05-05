@@ -16,6 +16,21 @@ const CARD = preload("res://Scenes/Cards/card.tscn")
 # Goes from cardhand to combathandler to cursor
 @onready var cursor = get_parent().get_parent().get_node("Cursor")
 
+func reset_deck() -> void:
+	var tempDeck : Array = []
+	for card in Global.Cards.Deck:
+		tempDeck.append(card)
+	for card in Global.Cards.Hand:
+		tempDeck.append(card)
+	for card in Global.Cards.Discard:
+		tempDeck.append(card)
+	for card in Global.Cards.Selected:
+		tempDeck.append(card)
+	Global.Cards.Hand = []
+	Global.Cards.Discard = []
+	Global.Cards.Selected = []
+	Global.Cards.Deck = tempDeck
+
 func draw() -> void:
 	if len(Global.Cards.Deck) <= 0:
 		return

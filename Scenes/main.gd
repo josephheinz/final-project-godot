@@ -132,6 +132,8 @@ func _ready() -> void:
 	center_dungeon()
 
 func _process(_delta: float) -> void:
+	for room in Global.State.visited:
+		Global.RoomsMap[room].Visited = true
 	if Input.is_action_just_pressed("ui_accept"):
 		Global.RoomsMap = {}
 		get_tree().reload_current_scene()
@@ -173,3 +175,4 @@ func load_dungeon() -> void:
 	player = Global.PLAYER.instantiate()
 	player.position = Global.State.player.pos
 	add_child(player)
+	center_dungeon()

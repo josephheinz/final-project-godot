@@ -16,7 +16,6 @@ var enemy_health: Health
 @onready var hand = get_parent().get_node("CardHand/Hand")
 
 func _ready() -> void:
-	print("Starting")
 	player_health_bar = player.get_node("PlayerHealthBar")
 	enemy_health_bar = enemy.get_node("EnemyHealthBar")
 
@@ -37,6 +36,7 @@ func combatTick() -> void:
 	enemy.get_node("BlockIcon/BlockLabel").text = str(enemy_health.block)
 	
 	if enemy_health.dead:
+		hand.reset_deck()
 		SceneManager.change_scene_to_file("res://Scenes/main.tscn")
 	if player_health.dead:
 		get_tree().free()
