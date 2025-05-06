@@ -23,7 +23,8 @@ var State: Dictionary = {
 		"pos": Vector2(0, 0)
 	},
 	"dungeon": {},
-	"visited": [Vector2i(0, 0)]
+	"visited": [Vector2i(0, 0)],
+	"visible": [Vector2i(0, 0)]
 }
 
 var Cards: Dictionary[String, Array] = {

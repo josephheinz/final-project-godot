@@ -81,11 +81,11 @@ func check_neighbors(_position: Vector2i) -> Array[Node]:
 	# yuck
 	if Global.RoomsMap.has(_position - Vector2i(1, 0)):
 		neighbors.append(Global.RoomsMap[_position - Vector2i(1, 0)])
-	elif Global.RoomsMap.has(_position - Vector2i(0, 1)):
+	if Global.RoomsMap.has(_position - Vector2i(0, 1)):
 		neighbors.append(Global.RoomsMap[_position - Vector2i(0, 1)])
-	elif Global.RoomsMap.has(_position + Vector2i(1, 0)):
+	if Global.RoomsMap.has(_position + Vector2i(1, 0)):
 		neighbors.append(Global.RoomsMap[_position + Vector2i(1, 0)])
-	elif Global.RoomsMap.has(_position + Vector2i(0, 1)):
+	if Global.RoomsMap.has(_position + Vector2i(0, 1)):
 		neighbors.append(Global.RoomsMap[_position + Vector2i(0, 1)])
 	return neighbors
 
@@ -134,9 +134,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	for room in Global.State.visited:
 		Global.RoomsMap[room].Visited = true
-	if Input.is_action_just_pressed("ui_accept"):
-		Global.RoomsMap = {}
-		get_tree().reload_current_scene()
+	for room in Global.State.visible:
+		Global.RoomsMap[room].Visible = true
 
 func zoom_cam(cam_size: Vector2, floor_size: Vector2) -> void:
 	var ratio: Vector2 = Vector2(floor_size / cam_size)

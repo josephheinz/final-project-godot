@@ -2,6 +2,7 @@ class_name Tile extends Node2D
 
 static var Size: Vector2i = Vector2i(100, 100)
 
+var Visible: bool = false
 var Visited: bool = false
 var VisitedColor: Color = Color.WHITE
 var UnvisitedColor: Color = Color.DARK_GRAY
@@ -13,6 +14,11 @@ var _last_color: Color = Color(-1, -1, -1)
 
 func _process(_delta: float) -> void:
 	var target_color: Color = VisitedColor if Visited else UnvisitedColor
+	
+	if Visible:
+		self.visible = true
+	else:
+		self.visible = false
 	
 	if target_color != _last_color:
 		var bg : Panel = self.get_node("Background")
