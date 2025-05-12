@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceo72dycgc3a8"]
+
+[ext_resource type="Script" uid="uid://7bcgpwnbqrsw" path="res://Scripts/shop.gd" id="1_2shtd"]
+[ext_resource type="Texture2D" uid="uid://croa6rv1unmew" path="res://Sprites/market_stall.png" id="1_a0mxf"]
+
+[sub_resource type="Curve" id="Curve_2shtd"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_2shtd")
+sep_curve = SubResource("Curve_2shtd")
+
+[node name="MarketStall" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_a0mxf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BuyButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -89.0
+offset_right = -15.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "BUY"
+
+[node name="LeaveButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -89.0
+offset_right = 99.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "EXIT"
+
+[node name="ShopLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_top = 22.0
+offset_right = 113.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 84
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -156.0
+offset_right = 124.0
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 36
+text = "You have: 0🪙"
+
+[node name="CardContainer" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(600, 210)
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/LeaveButton" to="." method="_on_leave_button_pressed"]

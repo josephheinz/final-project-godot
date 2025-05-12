@@ -10,6 +10,7 @@ enum USE_TYPES {DAMAGE = 0, HEAL = 1, BLOCK = 2}
 @export var allowedTargets: Array[TARGET_TYPES] = [TARGET_TYPES.ENEMY]
 @export var useType: USE_TYPES = USE_TYPES.DAMAGE
 @export var useAmount: int = 1
+@export var basePrice: int = 1
 
 func Use(target: Node) -> void:
 	match useType:

@@ -9,4 +9,5 @@ cardImage = "res://Sprites/nurse.jpg"
 allowedTargets = Array[int]([0])
 useType = 1
 useAmount = 2
+basePrice = 5
 metadata/_custom_type_script = "uid://btwaipkpf15mh"

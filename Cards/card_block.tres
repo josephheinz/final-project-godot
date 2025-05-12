@@ -9,4 +9,5 @@ cardImage = "C:/Users/joheb41/Documents/final-project-godot/Sprites/shield.jpg"
 allowedTargets = Array[int]([0])
 useType = 2
 useAmount = 2
+basePrice = 3
 metadata/_custom_type_script = "uid://btwaipkpf15mh"

@@ -185,7 +185,7 @@ vertical_alignment = 1
 
 [node name="Background" type="Sprite2D" parent="Environment"]
 visible = false
-position = Vector2(-42, -23)
+position = Vector2(3, 2)
 scale = Vector2(6.4, 3.6)
 texture = SubResource("GradientTexture2D_7jmb3")
 centered = false
