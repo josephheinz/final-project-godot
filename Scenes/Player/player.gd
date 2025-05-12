@@ -6,5 +6,7 @@ class_name Player extends Node2D
 
 
 func _on_movement_component_move() -> void:
-	var currentTile: Tile = Global.RoomsMap[Vector2i(position / Vector2(Tile.Size))]
-	currentTile.interact()
+	var pos: Vector2i = Vector2i(position / Vector2(Tile.Size))
+	var currentTile: Tile = Global.RoomsMap[pos]
+	if !Global.State.visited.has(pos):
+		currentTile.interact()
