@@ -37,6 +37,7 @@ func combatTick() -> void:
 	
 	if enemy_health.dead:
 		hand.reset_deck()
+		Global.Gold += Global.RNG.randi_range(0, 5)
 		SceneManager.change_scene_to_file("res://Scenes/main.tscn")
 	if player_health.dead:
 		get_tree().free()

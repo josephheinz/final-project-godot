@@ -33,7 +33,7 @@ var State: Dictionary = {
 }
 
 var Cards: Dictionary[String, Array] = {
-	"Deck": ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres","res://Cards/card_heal.tres"],
+	"Deck": ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_heal.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_heal.tres"],
 	"Hand": [],
 	"Discard": [],
 	"Selected": []
