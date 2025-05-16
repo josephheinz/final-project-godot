@@ -6,7 +6,7 @@ enum USE_TYPES {DAMAGE = 0, HEAL = 1, BLOCK = 2}
 
 @export_group("Card Data")
 @export var name: String = ""
-@export_global_file("*.png","*.jpg") var cardImage
+@export_file("*.png","*.jpg") var cardImage
 @export var allowedTargets: Array[TARGET_TYPES] = [TARGET_TYPES.ENEMY]
 @export var useType: USE_TYPES = USE_TYPES.DAMAGE
 @export var useAmount: int = 1

@@ -5,7 +5,7 @@ const CARD = preload("res://Scenes/Cards/card.tscn")
 var stock: Array[Dictionary] = []
 
 func _ready() -> void:
-	$CanvasLayer/GoldLabel.text = "You have: %s🪙" % Global.State.player.gold
+	$CanvasLayer/GoldLabel.text = "You have: %s Gold" % Global.State.player.gold
 	stock = generate_stock(3)
 	add_stock(stock)
 

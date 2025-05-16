@@ -5,9 +5,10 @@
 [resource]
 script = ExtResource("1_oh1or")
 name = "Slash"
-cardImage = "C:/Users/joheb41/Documents/final-project-godot/Sprites/sword.jpg"
+cardImage = "uid://gmx272rh7mcu"
 allowedTargets = Array[int]([1])
 useType = 0
 useAmount = 2
 basePrice = 2
+usePoints = 5
 metadata/_custom_type_script = "uid://btwaipkpf15mh"

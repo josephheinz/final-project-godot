@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>$GODOT_PROJECT_NAME</title>
+    <meta charset="UTF-8">
+    $GODOT_HEAD_INCLUDE
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="$GODOT_URL"></script>
+    <script>
+        var engine = new Engine($GODOT_CONFIG);
+        engine.startGame();
+    </script>
+</body>
+
+<style>
+    body, html {
+        height:100vh;
+        width:100vw;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $GODOT_SPLASH_COLOR;
+    }
+</style>
+
+</html>

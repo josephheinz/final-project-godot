@@ -25,7 +25,7 @@ var State: Dictionary = {
 		"pos": Vector2(0, 0),
 		"stats": {},
 		"character": null,
-		"gold": 10,
+		"gold": int(10),
 		"score": 0
 	},
 	"floor": 1,

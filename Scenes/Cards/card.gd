@@ -16,7 +16,7 @@ func _ready() -> void:
 	label.text = data.name
 	card_image.texture = load(data.cardImage)
 	cost.visible = show_cost
-	cost.text = "%s🪙" % data.basePrice
+	cost.text = "%s Gold" % data.basePrice
 
 func _on_mouse_entered() -> void:
 	hovered = true

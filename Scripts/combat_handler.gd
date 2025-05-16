@@ -14,7 +14,7 @@ var enemy_health: Health
 
 var cards_per_turn: int = 2
 
-var combat_type := 1
+var combat_type: float = 1
 
 signal player_no_more_cards
 
