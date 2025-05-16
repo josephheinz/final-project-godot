@@ -14,12 +14,21 @@ var enemy_health: Health
 
 var cards_per_turn: int = 2
 
+var combat_type := 1
+
 signal player_no_more_cards
 
 @onready var cursor = get_parent().get_node("Cursor")
 @onready var hand = get_parent().get_node("CardHand/Hand")
 
 func _ready() -> void:
+	match get_parent().name:
+		"Combat":
+			combat_type = 1
+		"Elite Combat":
+			combat_type = 1.25
+		"Boss Battle":
+			combat_type = 1.75
 	player_health_bar = player.get_node("PlayerHealthBar")
 	enemy_health_bar = enemy.get_node("EnemyHealthBar")
 
@@ -34,14 +43,19 @@ func _ready() -> void:
 	player_turn()
 
 func enemy_turn() -> void:
-	var attack_damage := Global.RNG.randi_range(0, (player_health.maxHealth + 5) / 5)
-	
+	var attack_damage: int = Global.RNG.randi_range(1, (player_health.maxHealth) / 5) * combat_type
+	print(attack_damage)
 	player_health.damage(attack_damage)
 	
 	player_turn()
 
 func player_turn() -> void:
 	cards_per_turn = 2
+	if len(Global.Cards.Hand) <= 0:
+		hand.reset_deck()
+		hand.draw()
+		hand.draw()
+	
 	for i in range(2):
 		hand.draw()
 	
@@ -66,7 +80,9 @@ func combatTick() -> void:
 	
 	if enemy_health.dead:
 		hand.reset_deck()
-		Global.State.player.gold += Global.RNG.randi_range(0, 5)
+		Global.State.player.gold += Global.RNG.randi_range(0, 5) * combat_type
+		if combat_type == 1.75:
+			Global.progress_floor()
 		SceneManager.change_scene_to_file("res://Scenes/main.tscn")
 	if Global.State.player.stats.dead:
 		SceneManager.change_scene_to_file("res://Scenes/game_over_screen.tscn")
@@ -76,7 +92,7 @@ func _process(_delta: float) -> void:
 
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == 1 and cursor.selecting:
+		if event.button_index == 1 and cursor.selecting and cards_per_turn > 0:
 			hand.useCard(cursor.selectedObject)
 			cards_per_turn -= 1
 			if cards_per_turn <= 0:

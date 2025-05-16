@@ -52,7 +52,14 @@ func create_character_health(maxHealth: int, character: CHARACTERS) -> void:
 	health.maxHealth = maxHealth
 	health.health = maxHealth
 	health.target_type = CardData.TARGET_TYPES.PLAYER
-	character_stats[character] = health.get_values(health)
+	character_stats[character] = Health.get_values(health)
 
 func _ready() -> void:
-	create_character_health(2, CHARACTERS.KNIGHT)
+	create_character_health(20, CHARACTERS.KNIGHT)
+
+func progress_floor() -> void:
+	State.floor += 1
+	RoomsMap = {}
+	State.dungeon = {}
+	State.visited = [Vector2i(0, 0)]
+	State.visible = [Vector2i(0, 0)]

@@ -1,0 +1,251 @@
+[gd_scene load_steps=15 format=3 uid="uid://cib41b655s87p"]
+
+[ext_resource type="Script" uid="uid://67iw5tpy26sh" path="res://Scripts/health_bar.gd" id="1_vi8sa"]
+[ext_resource type="PackedScene" uid="uid://bg87en8xd0xy4" path="res://Scenes/Components/health_component.tscn" id="2_eov0q"]
+[ext_resource type="Texture2D" uid="uid://do55iiqq1xyxb" path="res://Sprites/shield.png" id="3_flyfg"]
+[ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="4_44ejd"]
+[ext_resource type="PackedScene" uid="uid://db7etww061vm3" path="res://Scenes/cardHand.tscn" id="5_y0gev"]
+[ext_resource type="PackedScene" uid="uid://c8jud70tdwcd2" path="res://Scenes/combat_handler.tscn" id="6_idhru"]
+[ext_resource type="Texture2D" uid="uid://dclegvm2ukieo" path="res://Sprites/Artboard 1.png" id="7_pr8ab"]
+[ext_resource type="Script" uid="uid://ckhmmn31rt71j" path="res://Scripts/cursor.gd" id="8_8ajdh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4ln8h"]
+size = Vector2(200, 200)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe60u"]
+bg_color = Color(0.783523, 0.783523, 0.783523, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ln8h"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w34b"]
+size = Vector2(200, 200)
+
+[sub_resource type="Gradient" id="Gradient_d5ln6"]
+colors = PackedColorArray(0.517184, 0.517184, 0.517184, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jmb3"]
+gradient = SubResource("Gradient_d5ln6")
+width = 200
+height = 200
+fill_to = Vector2(1, 1)
+
+[node name="Elite Combat" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="CombatPlayer" type="Sprite2D" parent="."]
+z_index = 1000
+position = Vector2(225, 458)
+texture = SubResource("PlaceholderTexture2D_4ln8h")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="CombatPlayer" node_paths=PackedStringArray("HealthComponent")]
+custom_minimum_size = Vector2(200, 25)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_bottom = -123.0
+grow_horizontal = 2
+pivot_offset = Vector2(100, 25)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
+theme_override_styles/background = SubResource("StyleBoxFlat_fe60u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ln8h")
+step = 1.0
+value = 76.0
+script = ExtResource("1_vi8sa")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="CombatPlayer" instance=ExtResource("2_eov0q")]
+maxHealth = 20
+health = 20
+
+[node name="Area2D" type="Area2D" parent="CombatPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatPlayer/Area2D"]
+shape = SubResource("RectangleShape2D_3w34b")
+
+[node name="BlockIcon" type="TextureRect" parent="CombatPlayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -324.0
+offset_top = 67.0
+offset_right = -271.0
+offset_bottom = 120.0
+grow_horizontal = 0
+texture = ExtResource("3_flyfg")
+expand_mode = 3
+
+[node name="BlockLabel" type="Label" parent="CombatPlayer/BlockIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CombatEnemy" type="Sprite2D" parent="."]
+z_index = 1000
+position = Vector2(1047, 458)
+texture = SubResource("PlaceholderTexture2D_4ln8h")
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="CombatEnemy" node_paths=PackedStringArray("HealthComponent")]
+custom_minimum_size = Vector2(200, 25)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_bottom = -119.0
+grow_horizontal = 2
+pivot_offset = Vector2(100, 25)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
+theme_override_styles/background = SubResource("StyleBoxFlat_fe60u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ln8h")
+max_value = 38.0
+step = 1.0
+value = 15.0
+script = ExtResource("1_vi8sa")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="CombatEnemy" instance=ExtResource("2_eov0q")]
+maxHealth = 10
+health = 10
+target_type = 1
+
+[node name="Area2D" type="Area2D" parent="CombatEnemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatEnemy/Area2D"]
+shape = SubResource("RectangleShape2D_3w34b")
+
+[node name="BlockIcon" type="TextureRect" parent="CombatEnemy"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -324.0
+offset_top = 67.0
+offset_right = -271.0
+offset_bottom = 120.0
+grow_horizontal = 0
+texture = ExtResource("3_flyfg")
+expand_mode = 3
+
+[node name="BlockLabel" type="Label" parent="CombatEnemy/BlockIcon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Environment"]
+visible = false
+position = Vector2(3, 2)
+scale = Vector2(6.4, 3.6)
+texture = SubResource("GradientTexture2D_7jmb3")
+centered = false
+
+[node name="Ground" type="Sprite2D" parent="Environment"]
+position = Vector2(640, 644)
+scale = Vector2(0.984615, 0.17552)
+texture = ExtResource("4_44ejd")
+
+[node name="CardHand" parent="." instance=ExtResource("5_y0gev")]
+
+[node name="Combat Handler" parent="." node_paths=PackedStringArray("player", "enemy") instance=ExtResource("6_idhru")]
+player = NodePath("../CombatPlayer")
+enemy = NodePath("../CombatEnemy")
+
+[node name="Cursor" type="Sprite2D" parent="."]
+z_index = 1000
+z_as_relative = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_pr8ab")
+script = ExtResource("8_8ajdh")
+enabled = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Deck Label" type="Label" parent="CanvasLayer"]
+offset_left = 198.0
+offset_top = 10.0
+offset_right = 254.0
+offset_bottom = 33.0
+text = "Deck: 0"
+
+[node name="Cards Left Label" type="Label" parent="CanvasLayer"]
+offset_left = 560.0
+offset_top = 8.0
+offset_right = 733.0
+offset_bottom = 31.0
+text = "Cards Left This Turn: 0"
+
+[node name="Discard Label" type="Label" parent="CanvasLayer"]
+offset_left = 1046.0
+offset_top = 7.0
+offset_right = 1122.0
+offset_bottom = 30.0
+text = "Discard: 0"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 17.0
+offset_top = 583.0
+offset_right = 211.0
+offset_bottom = 614.0
+text = "DRAWDRAWDRAWCARD"
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 532.0
+offset_right = 103.0
+offset_bottom = 563.0
+text = "End Turn"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="Combat Handler" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndTurnButton" to="Combat Handler" method="_on_end_turn_button_pressed"]
