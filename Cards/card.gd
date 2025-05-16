@@ -11,8 +11,10 @@ enum USE_TYPES {DAMAGE = 0, HEAL = 1, BLOCK = 2}
 @export var useType: USE_TYPES = USE_TYPES.DAMAGE
 @export var useAmount: int = 1
 @export var basePrice: int = 1
+@export var usePoints: int = 5
 
 func Use(target: Node) -> void:
+	Global.State.player.score += usePoints * Global.State.floor
 	match useType:
 		USE_TYPES.DAMAGE:
 			Damage(useAmount, target)

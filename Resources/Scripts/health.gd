@@ -39,3 +39,19 @@ func heal(amount: int) -> void:
 
 func defend(amount: int) -> void:
 	block += amount
+
+static func get_values(_health: Health) -> Dictionary:
+	return {
+		"maxHealth": _health.maxHealth,
+		"health": _health.health,
+		"block": _health.block,
+		"target_type": _health.target_type,
+		"dead": _health.dead
+	}
+	
+func set_values(values: Dictionary) -> void:
+	maxHealth = values.maxHealth
+	health = values.health
+	block = values.block
+	target_type = values.target_type
+	dead = values.dead

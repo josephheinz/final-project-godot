@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvmco88o5xyjp"]
+
+[ext_resource type="Script" uid="uid://d067lvrnq0atf" path="res://Scripts/title_button.gd" id="1_y8man"]
+[ext_resource type="Script" uid="uid://cttidqjbxvt56" path="res://Scripts/exit_button.gd" id="2_jb6in"]
+[ext_resource type="Script" uid="uid://bf6k2jrbwpeqn" path="res://Scripts/score_text.gd" id="3_y8man"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.5
+offset_top = -202.0
+offset_right = 344.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 108
+text = "You Lose"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = 34.5
+offset_right = -19.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Title"
+script = ExtResource("1_y8man")
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.5
+offset_top = 34.5
+offset_right = 61.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+script = ExtResource("2_jb6in")
+
+[node name="ScoreText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -18.0
+offset_right = 114.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score:"
+horizontal_alignment = 1
+script = ExtResource("3_y8man")
+
+[connection signal="pressed" from="TitleButton" to="TitleButton" method="_on_pressed"]
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]

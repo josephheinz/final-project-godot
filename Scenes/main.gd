@@ -116,9 +116,10 @@ func place_boss_tile() -> void:
 	return
 
 func _ready() -> void:
-	if !Global.CurrentCharacter or Global.CurrentCharacter == null:
-		Global.CurrentCharacter = Global.CHARACTERS.KNIGHT
-	print(Global.RNG.seed)
+	if !Global.State.player.character or Global.State.player.character == null:
+		Global.State.player.character = Global.CHARACTERS.KNIGHT
+	if !Global.State.player.stats:
+		Global.State.player.stats = Global.character_stats[Global.State.player.character]
 	if len(Global.RoomsMap) > 0:
 		for room in Global.RoomsMap:
 			#add_specific_room(room * Tile.Size, Global.RoomsMap[room])

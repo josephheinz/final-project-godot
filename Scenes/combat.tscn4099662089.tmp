@@ -240,12 +240,4 @@ offset_right = 211.0
 offset_bottom = 614.0
 text = "DRAWDRAWDRAWCARD"
 
-[node name="EndTurnButton" type="Button" parent="CanvasLayer"]
-offset_left = 6.0
-offset_top = 532.0
-offset_right = 103.0
-offset_bottom = 563.0
-text = "End Turn"
-
 [connection signal="pressed" from="CanvasLayer/Button" to="Combat Handler" method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EndTurnButton" to="Combat Handler" method="_on_end_turn_button_pressed"]
