@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=2 format=3 uid="uid://dcnnjkg3rtyl8"]
+
+[ext_resource type="Script" uid="uid://b683ep3d11vdk" path="res://Enemies/enemy.gd" id="1_4paly"]
+
+[resource]
+script = ExtResource("1_4paly")
+maxHealth = 2
+target_type = 1
+block = 0
+enemyImage = "uid://g34qt7onjs8i"
+name = "Hellpup"
+damage = 1
+metadata/_custom_type_script = "uid://b683ep3d11vdk"

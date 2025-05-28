@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_lpflc")
-maxHealth = 20
+maxHealth = 15
 target_type = 1
 block = 0
 enemyImage = "uid://cqrewf7cur2q4"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=2 format=3 uid="uid://cg3b8t3ck74uw"]
+
+[ext_resource type="Script" uid="uid://b683ep3d11vdk" path="res://Enemies/enemy.gd" id="1_b8pkp"]
+
+[resource]
+script = ExtResource("1_b8pkp")
+maxHealth = 8
+target_type = 1
+block = 2
+enemyImage = "uid://cfpss1oc7gb8i"
+name = "Super Goop"
+damage = 1
+metadata/_custom_type_script = "uid://b683ep3d11vdk"

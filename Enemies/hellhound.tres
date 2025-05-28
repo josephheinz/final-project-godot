@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=2 format=3 uid="uid://dmbrxyc4ssjuv"]
+
+[ext_resource type="Script" uid="uid://b683ep3d11vdk" path="res://Enemies/enemy.gd" id="1_kbesi"]
+
+[resource]
+script = ExtResource("1_kbesi")
+maxHealth = 8
+target_type = 1
+block = 0
+enemyImage = "uid://c7n60ggmq4oqm"
+name = "Hellhound"
+damage = 3
+metadata/_custom_type_script = "uid://b683ep3d11vdk"
