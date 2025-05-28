@@ -6,4 +6,5 @@ func _on_pressed() -> void:
 	if len(seed_text.text) > 0:
 		if int(seed_text.text):
 			Global.RNG.seed = int(seed_text.text)
+	Global.reset_state()
 	SceneManager.change_scene_to_file("res://Scenes/main.tscn")

@@ -55,8 +55,7 @@ func _ready() -> void:
 	player_turn()
 
 func enemy_turn() -> void:
-	var attack_damage: int = Global.RNG.randi_range(1, (player_health.maxHealth) / 5) * combat_type
-	print(attack_damage)
+	var attack_damage: int = Enemy.damage
 	player_health.damage(attack_damage)
 	
 	player_turn()

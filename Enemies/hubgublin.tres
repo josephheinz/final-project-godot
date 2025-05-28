@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=2 format=3 uid="uid://m6l5kh23y3u7"]
+
+[ext_resource type="Script" uid="uid://b683ep3d11vdk" path="res://Enemies/enemy.gd" id="1_taua7"]
+
+[resource]
+script = ExtResource("1_taua7")
+maxHealth = 6
+target_type = 1
+block = 0
+enemyImage = "uid://du50n4s2o5jee"
+name = "Hubgublin"
+damage = 2
+metadata/_custom_type_script = "uid://b683ep3d11vdk"

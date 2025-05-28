@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="2_ws51j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmcdd"]
-bg_color = Color(0.805282, 0.560442, 0.26328, 1)
+bg_color = Color(0.247059, 0.258824, 0.258824, 1)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(0.553713, 0.373397, 0.146112, 1)
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -21,7 +21,7 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws51j"]
-bg_color = Color(0.552941, 0.372549, 0.145098, 1)
+bg_color = Color(0.588235, 0.658824, 0.658824, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ylnsc"]
 

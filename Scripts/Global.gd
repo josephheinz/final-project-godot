@@ -50,7 +50,9 @@ var character_sprites: Dictionary[CHARACTERS, Resource] = {
 }
 
 var enemies: Dictionary[float, Array] = {
-	1: [load("res://Enemies/gublin.tres")]
+	1: [load("res://Enemies/gublin.tres")],
+	1.25: [load("res://Enemies/hubgublin.tres")],
+	1.75: [load("res://Enemies/gublin_king.tres")]
 }
 
 var character_stats: Dictionary[CHARACTERS, Dictionary]
@@ -71,3 +73,24 @@ func progress_floor() -> void:
 	State.dungeon = {}
 	State.visited = [Vector2i(0, 0)]
 	State.visible = [Vector2i(0, 0)]
+	State.stats.maxHealth *= 1.25
+	State.stats.health = State.stats.maxHealth
+
+func reset_state() -> void:
+	State.player = {
+		"pos": Vector2(0, 0),
+		"stats": {},
+		"character": null,
+		"gold": int(10),
+		"score": 0
+	}
+	State.dungeon = {}
+	State.floor = 1
+	State.visited = [Vector2i(0, 0)]
+	State.visible = [Vector2i(0, 0)]
+	RoomsMap = {}
+	Cards.Deck = ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres"]
+	Cards.Hand = []
+	Cards.Selected = []
+	Cards.Discard = []
+	return
