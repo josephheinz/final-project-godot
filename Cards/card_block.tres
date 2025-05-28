@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_m0f7l")
 name = "Block"
-cardImage = "uid://bvyhmq1y6ttx2"
+cardImage = "uid://cf2vipu4c8lmt"
 allowedTargets = Array[int]([0])
 useType = 2
 useAmount = 2

@@ -45,6 +45,14 @@ var character_cards: Dictionary[CHARACTERS, Array] = {
 	CHARACTERS.KNIGHT: ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_heal.tres"]
 }
 
+var character_sprites: Dictionary[CHARACTERS, Resource] = {
+	CHARACTERS.KNIGHT: load("res://Sprites/knight.png")
+}
+
+var enemies: Dictionary[float, Array] = {
+	1: [load("res://Enemies/gublin.tres")]
+}
+
 var character_stats: Dictionary[CHARACTERS, Dictionary]
 
 func create_character_health(maxHealth: int, character: CHARACTERS) -> void:

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_oh1or")
 name = "Slash"
-cardImage = "uid://gmx272rh7mcu"
+cardImage = "uid://co65sur7n74ct"
 allowedTargets = Array[int]([1])
 useType = 0
 useAmount = 2

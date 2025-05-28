@@ -12,6 +12,8 @@ var enemy_health_bar: HealthBar
 var player_health: Health
 var enemy_health: Health
 
+var Enemy: enemy
+
 var cards_per_turn: int = 2
 
 var combat_type: float = 1
@@ -29,9 +31,14 @@ func _ready() -> void:
 			combat_type = 1.25
 		"Boss Battle":
 			combat_type = 1.75
+			
 	player_health_bar = player.get_node("PlayerHealthBar")
-	enemy_health_bar = enemy.get_node("EnemyHealthBar")
-
+	enemy_health_bar = enemy.get_node("EnemyHealthBar")		
+	
+	Enemy = Global.enemies[combat_type].pick_random()
+	var _temp_health: Health = Enemy.make_health_comp()
+	enemy_health_bar.HealthComponent.set_values(Health.get_values(_temp_health))
+	
 	player_health = player_health_bar.HealthComponent
 	player_health.set_values(Global.State.player.stats)
 	
@@ -39,6 +46,11 @@ func _ready() -> void:
 	
 	player_health_bar.max_value = player_health.maxHealth
 	enemy_health_bar.max_value = enemy_health.maxHealth
+	
+	get_parent().get_node("CombatEnemy").texture = load(Enemy.enemyImage)
+	get_parent().get_node("CombatEnemy/Name").text = Enemy.name
+	
+	get_parent().get_node("CombatPlayer").texture = Global.character_sprites[Global.State.player.character]
 	
 	player_turn()
 

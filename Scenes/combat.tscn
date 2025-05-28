@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://br15hp0humr3x"]
 
 [ext_resource type="Script" uid="uid://67iw5tpy26sh" path="res://Scripts/health_bar.gd" id="1_4ln8h"]
-[ext_resource type="Texture2D" uid="uid://bm1a54w765dax" path="res://Sprites/wall.jpg" id="1_7jmb3"]
 [ext_resource type="PackedScene" uid="uid://db7etww061vm3" path="res://Scenes/cardHand.tscn" id="2_fe60u"]
 [ext_resource type="PackedScene" uid="uid://bg87en8xd0xy4" path="res://Scenes/Components/health_component.tscn" id="2_ubpar"]
 [ext_resource type="Texture2D" uid="uid://do55iiqq1xyxb" path="res://Sprites/shield.png" id="3_avwh6"]
+[ext_resource type="Texture2D" uid="uid://dckxbygk2gggi" path="res://Sprites/bricks.png" id="4_avwh6"]
 [ext_resource type="PackedScene" uid="uid://c8jud70tdwcd2" path="res://Scenes/combat_handler.tscn" id="5_ut0kg"]
 [ext_resource type="Texture2D" uid="uid://dclegvm2ukieo" path="res://Sprites/Artboard 1.png" id="6_yt1oa"]
 [ext_resource type="Script" uid="uid://ckhmmn31rt71j" path="res://Scripts/cursor.gd" id="7_3w34b"]
@@ -181,6 +181,17 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Name" type="Label" parent="CombatEnemy"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = -184.795
+offset_right = -80.0
+offset_bottom = -161.795
+grow_horizontal = 2
+text = "[Name]"
+
 [node name="Environment" type="Node" parent="."]
 
 [node name="Background" type="Sprite2D" parent="Environment"]
@@ -191,9 +202,12 @@ texture = SubResource("GradientTexture2D_7jmb3")
 centered = false
 
 [node name="Ground" type="Sprite2D" parent="Environment"]
-position = Vector2(640, 644)
-scale = Vector2(0.984615, 0.17552)
-texture = ExtResource("1_7jmb3")
+position = Vector2(322, 644)
+texture = ExtResource("4_avwh6")
+
+[node name="Ground2" type="Sprite2D" parent="Environment"]
+position = Vector2(961, 644)
+texture = ExtResource("4_avwh6")
 
 [node name="CardHand" parent="." instance=ExtResource("2_fe60u")]
 
