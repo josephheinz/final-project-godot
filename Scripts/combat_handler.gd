@@ -20,6 +20,8 @@ var combat_type: float = 1
 
 var buffer: Timer = Timer.new()
 
+var floating_text := preload("res://Scenes/floating_text.tscn")
+
 signal player_no_more_cards
 
 @onready var cursor = get_parent().get_node("Cursor")
@@ -61,7 +63,10 @@ func _ready() -> void:
 
 func enemy_turn() -> void:
 	var attack_damage: int = Enemy.damage
-	player_health.damage(attack_damage)
+	var dmg := await player_health.damage(attack_damage)
+	var txt := floating_text.instantiate()
+	txt.get_node("Label").text = str(dmg)
+	playerSprite.add_child(txt)
 	
 	await player_turn()
 

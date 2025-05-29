@@ -25,7 +25,7 @@ func _ready() -> void:
 @export var target_type: CardData.TARGET_TYPES
 @export var block: int = 0
 
-func damage(amount: int) -> void:
+func damage(amount: int) -> int:
 	var hit_sfx := AudioStreamPlayer.new()
 	if amount > block:
 		amount -= block
@@ -44,8 +44,9 @@ func damage(amount: int) -> void:
 	health -= amount
 	await hit_sfx.finished
 	hit_sfx.queue_free()
+	return amount
 
-func heal(amount: int) -> void:
+func heal(amount: int) -> int:
 	var heal_sfx := AudioStreamPlayer.new()
 	heal_sfx.stream = load("res://Audio/heal_sfx.wav")
 	add_child(heal_sfx)
@@ -53,8 +54,9 @@ func heal(amount: int) -> void:
 	health += amount
 	await heal_sfx.finished
 	heal_sfx.queue_free()
+	return amount
 
-func defend(amount: int) -> void:
+func defend(amount: int) -> int:
 	var shield_sfx := AudioStreamPlayer.new()
 	shield_sfx.stream = load("res://Audio/shield_sfx.wav")
 	add_child(shield_sfx)
@@ -62,6 +64,7 @@ func defend(amount: int) -> void:
 	block += amount
 	await shield_sfx.finished
 	shield_sfx.queue_free()
+	return amount
 
 static func get_values(_health: Health) -> Dictionary:
 	return {
