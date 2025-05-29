@@ -150,9 +150,9 @@ shape = SubResource("RectangleShape2D_3w34b")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -131.165
+offset_left = -150.0
 offset_top = 67.0
-offset_right = -78.165
+offset_right = -97.0
 offset_bottom = 120.0
 grow_horizontal = 0
 texture = ExtResource("3_f6wtb")
@@ -210,9 +210,9 @@ flip_h = true
 
 [node name="CardHand" parent="." instance=ExtResource("5_cf2as")]
 
-[node name="Combat Handler" parent="." node_paths=PackedStringArray("player", "enemy") instance=ExtResource("6_sf6om")]
-player = NodePath("../CombatPlayer")
-enemy = NodePath("../CombatEnemy")
+[node name="Combat Handler" parent="." node_paths=PackedStringArray("playerSprite", "enemySprite") instance=ExtResource("6_sf6om")]
+playerSprite = NodePath("../CombatPlayer")
+enemySprite = NodePath("../CombatEnemy")
 
 [node name="Cursor" type="Sprite2D" parent="."]
 z_index = 1000

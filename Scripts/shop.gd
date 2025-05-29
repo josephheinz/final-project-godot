@@ -43,8 +43,13 @@ func _process(_delta: float) -> void:
 
 func selectCard(card: Node) -> void:
 	var index := $CanvasLayer/CardContainer.get_children().find(card)
-	
+	var coin_sfx := AudioStreamPlayer.new()
+	coin_sfx.stream = load("res://Audio/coins_sfx.mp3")
+	add_child(coin_sfx)
+	coin_sfx.play()
 	stock[index].selected = not stock[index].selected
+	await coin_sfx.finished
+	coin_sfx.queue_free()
 
 func _on_buy_button_pressed() -> void:
 	var selected : Array[Dictionary] = []

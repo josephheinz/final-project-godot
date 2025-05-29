@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckew11hg6a6op"
+path="res://.godot/imported/Gravestone - Hollow Bones in Hidden Caverns.mp3-cc21f3a5a1ec10de9e9076e373ac9b9e.mp3str"
+
+[deps]
+
+source_file="res://Audio/Gravestone - Hollow Bones in Hidden Caverns.mp3"
+dest_files=["res://.godot/imported/Gravestone - Hollow Bones in Hidden Caverns.mp3-cc21f3a5a1ec10de9e9076e373ac9b9e.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

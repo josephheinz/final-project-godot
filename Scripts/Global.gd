@@ -74,7 +74,7 @@ func progress_floor() -> void:
 	State.visited = [Vector2i(0, 0)]
 	State.visible = [Vector2i(0, 0)]
 	State.player.stats.maxHealth *= 1.25
-	State.player.stats.health = State.stats.maxHealth
+	State.player.stats.health = State.player.stats.maxHealth
 
 func reset_state() -> void:
 	State.player = {
@@ -94,3 +94,7 @@ func reset_state() -> void:
 	Cards.Selected = []
 	Cards.Discard = []
 	return
+
+#Shield Hit 1 by CTCollab -- https://freesound.org/s/223630/ -- License: Attribution 3.0
+#MCU_or_movie_inspired_blade_stab_or_slash_flesh_sounds.mp3 by Artninja -- https://freesound.org/s/700235/ -- License: Attribution 4.0
+#Brooding Sinister Laughter by amauri8BIT -- https://freesound.org/s/786076/ -- License: Attribution 4.0

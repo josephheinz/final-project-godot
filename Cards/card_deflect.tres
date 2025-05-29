@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://b1osupjklkaol"]
+
+[ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="1_ionc4"]
+
+[resource]
+script = ExtResource("1_ionc4")
+name = "Deflect"
+cardImage = "uid://chjfp8wdwct5m"
+allowedTargets = Array[int]([0])
+useType = 2
+useAmount = 1
+basePrice = 1
+usePoints = 5
+metadata/_custom_type_script = "uid://btwaipkpf15mh"

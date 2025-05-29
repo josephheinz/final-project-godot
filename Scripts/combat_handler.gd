@@ -1,7 +1,7 @@
 class_name CombatHandler extends Node
 
-@export var player: Sprite2D
-@export var enemy: Sprite2D
+@export var playerSprite: Sprite2D
+@export var enemySprite: Sprite2D
 
 @export var playerStats: Stats
 @export var enemyStats: Stats
@@ -18,12 +18,17 @@ var cards_per_turn: int = 2
 
 var combat_type: float = 1
 
+var buffer: Timer = Timer.new()
+
 signal player_no_more_cards
 
 @onready var cursor = get_parent().get_node("Cursor")
 @onready var hand = get_parent().get_node("CardHand/Hand")
 
 func _ready() -> void:
+	buffer.wait_time = 0.25
+	buffer.one_shot = true
+	add_child(buffer)
 	match get_parent().name:
 		"Combat":
 			combat_type = 1
@@ -32,8 +37,8 @@ func _ready() -> void:
 		"Boss Battle":
 			combat_type = 1.75
 			
-	player_health_bar = player.get_node("PlayerHealthBar")
-	enemy_health_bar = enemy.get_node("EnemyHealthBar")		
+	player_health_bar = playerSprite.get_node("PlayerHealthBar")
+	enemy_health_bar = enemySprite.get_node("EnemyHealthBar")		
 	
 	Enemy = Global.enemies[combat_type].pick_random()
 	var _temp_health: Health = Enemy.make_health_comp()
@@ -52,13 +57,13 @@ func _ready() -> void:
 	
 	get_parent().get_node("CombatPlayer").texture = Global.character_sprites[Global.State.player.character]
 	
-	player_turn()
+	await player_turn()
 
 func enemy_turn() -> void:
 	var attack_damage: int = Enemy.damage
 	player_health.damage(attack_damage)
 	
-	player_turn()
+	await player_turn()
 
 func player_turn() -> void:
 	cards_per_turn = 2
@@ -74,7 +79,7 @@ func player_turn() -> void:
 	
 	await get_tree().create_timer(1.5).timeout
 	
-	enemy_turn()
+	await enemy_turn()
 
 func combatTick() -> void:
 	player_health_bar.value = player_health.health
@@ -84,18 +89,24 @@ func combatTick() -> void:
 	get_parent().get_node("CanvasLayer/Discard Label").text = "Discard: " + str(len(Global.Cards.Discard))
 	get_parent().get_node("CanvasLayer/Cards Left Label").text = "Cards Left This Turn: %s" % str(cards_per_turn)
 	
-	player.get_node("BlockIcon/BlockLabel").text = str(player_health.block)
-	enemy.get_node("BlockIcon/BlockLabel").text = str(enemy_health.block)
+	playerSprite.get_node("BlockIcon/BlockLabel").text = str(player_health.block)
+	enemySprite.get_node("BlockIcon/BlockLabel").text = str(enemy_health.block)
 	
 	Global.State.player.stats = Health.get_values(player_health)
 	
 	if enemy_health.dead:
+		await get_tree().create_timer(1.5).timeout
 		hand.reset_deck()
-		Global.State.player.gold += Global.RNG.randi_range(0, 5) * combat_type
+		Global.State.player.gold += Global.RNG.randi_range(0, 5) * combat_type * Global.State.floor
 		if combat_type == 1.75:
 			Global.progress_floor()
 		SceneManager.change_scene_to_file("res://Scenes/main.tscn")
-	if Global.State.player.stats.dead:
+	if Global.State.player.stats.dead and get_child_count() <= 1:
+		var death_sfx := AudioStreamPlayer.new()
+		death_sfx.stream = load("res://Audio/death_sfx.mp3")
+		add_child(death_sfx)
+		death_sfx.play()
+		await death_sfx.finished
 		SceneManager.change_scene_to_file("res://Scenes/game_over_screen.tscn")
 
 func _process(_delta: float) -> void:
@@ -103,9 +114,12 @@ func _process(_delta: float) -> void:
 
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == 1 and cursor.selecting and cards_per_turn > 0:
+		print(cursor.selecting)
+		if event.button_index == 1 and cursor.selecting and cards_per_turn > 0 and buffer.is_stopped():
 			hand.useCard(cursor.selectedObject)
 			cards_per_turn -= 1
+			buffer.start()
+			cursor.selecting = false
 			if cards_per_turn <= 0:
 				player_no_more_cards.emit()
 

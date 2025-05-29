@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global.gd"
 SceneManager="*res://addons/scene_manager/autoload/scene_manager.tscn"
+BackgroundMusic="*res://Scenes/background_music.tscn"
 
 [display]
 

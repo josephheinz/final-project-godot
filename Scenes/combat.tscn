@@ -208,9 +208,9 @@ flip_h = true
 
 [node name="CardHand" parent="." instance=ExtResource("2_fe60u")]
 
-[node name="Combat Handler" parent="." node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_ut0kg")]
-player = NodePath("../CombatPlayer")
-enemy = NodePath("../CombatEnemy")
+[node name="Combat Handler" parent="." node_paths=PackedStringArray("playerSprite", "enemySprite") instance=ExtResource("5_ut0kg")]
+playerSprite = NodePath("../CombatPlayer")
+enemySprite = NodePath("../CombatEnemy")
 
 [node name="Cursor" type="Sprite2D" parent="."]
 z_index = 1000
