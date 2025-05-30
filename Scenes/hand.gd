@@ -135,16 +135,16 @@ func selectCard(card: Node) -> void:
 	
 	_update_cards()
 
-func useCard(target: Node) -> void:
+func useCard(target: Node) -> Dictionary:
 	if len(selectedCard.get_children()) < 1:
-		return
+		return {}
 	
 	var card := selectedCard.get_child(0)
 	
-	card.data.Use(target)
+	var result = card.data.Use(target)
 	cursor.selectedCard = null
 	cursor.enabled = false
 	Global.Cards.Discard.append(Global.Cards.Selected[-1])
 	Global.Cards.Selected.pop_back()
 	discard()
-	
+	return result

@@ -63,10 +63,24 @@ func _ready() -> void:
 
 func enemy_turn() -> void:
 	var attack_damage: int = Enemy.damage
-	var dmg := await player_health.damage(attack_damage)
+	var result := player_health.damage(attack_damage)
 	var txt := floating_text.instantiate()
-	txt.get_node("Label").text = str(dmg)
+	
+	txt.amount = result.damage
+	txt.color = result.color
+	var _pos = playerSprite.position
 	playerSprite.add_child(txt)
+	
+	var half_size = playerSprite.get_rect().size * 0.5
+	var random_offset = Vector2(
+		Global.RNG.randi_range(-half_size.x, half_size.x),
+		Global.RNG.randi_range(-half_size.y, half_size.y)
+	)
+	txt.global_position = _pos + random_offset
+	print(txt.position)
+	
+	await result.awaitable
+	result.node.queue_free()
 	
 	await player_turn()
 
@@ -117,17 +131,36 @@ func combatTick() -> void:
 func _process(_delta: float) -> void:
 	combatTick()
 
+func float_text(target: Node, params: Dictionary) -> void:
+	print(target, " ", params)
+	var txt := floating_text.instantiate()
+	
+	txt.amount = params.damage
+	txt.color = params.color
+	var _pos = target.position
+	target.add_child(txt)
+	
+	var half_size = target.get_rect().size * 0.5
+	var random_offset = Vector2(
+		Global.RNG.randi_range(-half_size.x, half_size.x),
+		Global.RNG.randi_range(-half_size.y, half_size.y)
+	)
+	txt.global_position = _pos + random_offset
+	print(txt.position)
+	
+	await params.awaitable
+	params.node.queue_free()
+
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		print(cursor.selecting)
 		if event.button_index == 1 and cursor.selecting and cards_per_turn > 0 and buffer.is_stopped():
-			hand.useCard(cursor.selectedObject)
+			var result = hand.useCard(cursor.selectedObject)
+			float_text(cursor.selectedObject, result)
 			cards_per_turn -= 1
 			buffer.start()
 			cursor.selecting = false
 			if cards_per_turn <= 0:
 				player_no_more_cards.emit()
-
 
 func _on_button_pressed() -> void:
 	hand.draw()

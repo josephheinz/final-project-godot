@@ -13,21 +13,30 @@ enum USE_TYPES {DAMAGE = 0, HEAL = 1, BLOCK = 2}
 @export var basePrice: int = 1
 @export var usePoints: int = 5
 
-func Use(target: Node) -> void:
+func Use(target: Node) -> Dictionary:
 	Global.State.player.score += usePoints * Global.State.floor
 	match useType:
 		USE_TYPES.DAMAGE:
-			Damage(useAmount, target)
+			return Damage(useAmount, target)
 		USE_TYPES.HEAL:
-			Heal(useAmount, target)
+			return Heal(useAmount, target)
 		USE_TYPES.BLOCK:
-			Block(useAmount, target)
+			return Block(useAmount, target)
+	return {
+		"damage": 0,
+		"color": Color.CRIMSON,
+		"awaitable": null,
+		"node": null
+	}
 
-func Damage(amount: int, target: Node) -> void:
-	target.get_node("HealthComponent").damage(amount)
+func Damage(amount: int, target: Node) -> Dictionary:
+	var result = target.get_node("HealthComponent").damage(amount)
+	return result
 	
-func Heal(amount: int, target: Node) -> void:
-	target.get_node("HealthComponent").heal(amount)
+func Heal(amount: int, target: Node) -> Dictionary:
+	var result = target.get_node("HealthComponent").heal(amount)
+	return result
 
-func Block(amount: int, target: Node) -> void:
-	target.get_node("HealthComponent").defend(amount)
+func Block(amount: int, target: Node) -> Dictionary:
+	var result = target.get_node("HealthComponent").defend(amount)
+	return result

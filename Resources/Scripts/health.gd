@@ -25,8 +25,9 @@ func _ready() -> void:
 @export var target_type: CardData.TARGET_TYPES
 @export var block: int = 0
 
-func damage(amount: int) -> int:
+func damage(amount: int) -> Dictionary:
 	var hit_sfx := AudioStreamPlayer.new()
+	var _temp = amount
 	if amount > block:
 		amount -= block
 		block = 0
@@ -42,29 +43,38 @@ func damage(amount: int) -> int:
 	add_child(hit_sfx)
 	hit_sfx.play()
 	health -= amount
-	await hit_sfx.finished
-	hit_sfx.queue_free()
-	return amount
+	return {
+		"damage": amount if amount > 0 else _temp,
+		"color": Color.CRIMSON if amount > 0 else Color.CORNFLOWER_BLUE,
+		"awaitable": hit_sfx.finished,
+		"node": hit_sfx
+	}
 
-func heal(amount: int) -> int:
+func heal(amount: int) -> Dictionary:
 	var heal_sfx := AudioStreamPlayer.new()
 	heal_sfx.stream = load("res://Audio/heal_sfx.wav")
 	add_child(heal_sfx)
 	heal_sfx.play()
 	health += amount
-	await heal_sfx.finished
-	heal_sfx.queue_free()
-	return amount
+	return {
+		"damage": amount,
+		"color": Color.FOREST_GREEN,
+		"awaitable": heal_sfx.finished,
+		"node": heal_sfx
+	}
 
-func defend(amount: int) -> int:
+func defend(amount: int) -> Dictionary:
 	var shield_sfx := AudioStreamPlayer.new()
 	shield_sfx.stream = load("res://Audio/shield_sfx.wav")
 	add_child(shield_sfx)
 	shield_sfx.play()
 	block += amount
-	await shield_sfx.finished
-	shield_sfx.queue_free()
-	return amount
+	return {
+		"damage": amount,
+		"color": Color.CORNFLOWER_BLUE,
+		"awaitable": shield_sfx.finished,
+		"node": shield_sfx
+	}
 
 static func get_values(_health: Health) -> Dictionary:
 	return {
