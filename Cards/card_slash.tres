@@ -10,5 +10,5 @@ allowedTargets = Array[int]([1])
 useType = 0
 useAmount = 2
 basePrice = 2
-usePoints = 5
+usePoints = 10
 metadata/_custom_type_script = "uid://btwaipkpf15mh"

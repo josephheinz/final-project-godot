@@ -1,0 +1,122 @@
+[gd_scene load_steps=4 format=3 uid="uid://boqrfh1fe3tuo"]
+
+[ext_resource type="Script" uid="uid://d067lvrnq0atf" path="res://Scripts/title_button.gd" id="1_r18jl"]
+[ext_resource type="Texture2D" uid="uid://dckxbygk2gggi" path="res://Sprites/bricks.png" id="2_ccovl"]
+[ext_resource type="Texture2D" uid="uid://b5wjgg3lra2lb" path="res://Sprites/background.png" id="3_1bamb"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.5
+offset_top = -356.51
+offset_right = 344.5
+offset_bottom = -208.51
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 108
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.5
+offset_top = -185.75
+offset_right = 586.5
+offset_bottom = 14.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 18
+text = "Shield Hit 1 by CTCollab -- https://freesound.org/s/223630/ -- License: Attribution 3.0
+
+MCU_or_movie_inspired_blade_stab_or_slash_flesh_sounds.mp3 by Artninja -- https://freesound.org/s/700235/ -- License: Attribution 4.0
+
+Brooding Sinister Laughter by amauri8BIT -- https://freesound.org/s/786076/ -- License: Attribution 4.0
+
+Background theme by Gravestone69: https://gravestone69.bandcamp.com/track/hollow-bones-in-hidden-caverns"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.5
+offset_top = 55.43
+offset_right = 61.5
+offset_bottom = 86.43
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[node name="TitleButton" type="Button" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 55.43
+offset_right = -19.0
+offset_bottom = 86.43
+grow_horizontal = 2
+grow_vertical = 2
+text = "Title"
+script = ExtResource("1_r18jl")
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(-318, 284)
+texture = ExtResource("2_ccovl")
+
+[node name="Ground2" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(321, 284)
+texture = ExtResource("2_ccovl")
+
+[node name="Background2" type="Sprite2D" parent="."]
+modulate = Color(0.513233, 0.513233, 0.513233, 1)
+z_index = -3
+position = Vector2(-640, -360)
+texture = ExtResource("3_1bamb")
+centered = false
+
+[node name="Background3" type="Sprite2D" parent="."]
+modulate = Color(0.513233, 0.513233, 0.513233, 1)
+z_index = -3
+position = Vector2(0, -360)
+texture = ExtResource("3_1bamb")
+centered = false
+flip_h = true
+
+[connection signal="pressed" from="TitleButton" to="TitleButton" method="_on_pressed"]

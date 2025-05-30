@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://bvl4yfsvpugy2"]
+
+[ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="1_422vt"]
+
+[resource]
+script = ExtResource("1_422vt")
+name = "Health Potion"
+cardImage = "uid://dncan6jt6ha"
+allowedTargets = Array[int]([0])
+useType = 1
+useAmount = 1
+basePrice = 2
+usePoints = 5
+metadata/_custom_type_script = "uid://btwaipkpf15mh"

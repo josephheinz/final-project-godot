@@ -9,6 +9,6 @@ cardImage = "uid://chjfp8wdwct5m"
 allowedTargets = Array[int]([0])
 useType = 2
 useAmount = 1
-basePrice = 1
+basePrice = 3
 usePoints = 5
 metadata/_custom_type_script = "uid://btwaipkpf15mh"

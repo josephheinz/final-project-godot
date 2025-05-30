@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvmco88o5xyjp"]
+[gd_scene load_steps=6 format=3 uid="uid://dvmco88o5xyjp"]
 
 [ext_resource type="Script" uid="uid://d067lvrnq0atf" path="res://Scripts/title_button.gd" id="1_y8man"]
 [ext_resource type="Script" uid="uid://cttidqjbxvt56" path="res://Scripts/exit_button.gd" id="2_jb6in"]
 [ext_resource type="Script" uid="uid://bf6k2jrbwpeqn" path="res://Scripts/score_text.gd" id="3_y8man"]
+[ext_resource type="Texture2D" uid="uid://dckxbygk2gggi" path="res://Sprites/bricks.png" id="4_e5yba"]
+[ext_resource type="Texture2D" uid="uid://b5wjgg3lra2lb" path="res://Sprites/background.png" id="5_ladg1"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -13,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Label" parent="."]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,6 +37,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TitleButton" type="Button" parent="."]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,6 +54,7 @@ text = "Title"
 script = ExtResource("1_y8man")
 
 [node name="ExitButton" type="Button" parent="."]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,6 +71,7 @@ text = "Exit"
 script = ExtResource("2_jb6in")
 
 [node name="ScoreText" type="Label" parent="."]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -81,6 +87,30 @@ grow_vertical = 2
 text = "Score:"
 horizontal_alignment = 1
 script = ExtResource("3_y8man")
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(322, 644)
+texture = ExtResource("4_e5yba")
+
+[node name="Ground2" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(961, 644)
+texture = ExtResource("4_e5yba")
+
+[node name="Background2" type="Sprite2D" parent="."]
+modulate = Color(0.513233, 0.513233, 0.513233, 1)
+z_index = -3
+texture = ExtResource("5_ladg1")
+centered = false
+
+[node name="Background3" type="Sprite2D" parent="."]
+modulate = Color(0.513233, 0.513233, 0.513233, 1)
+z_index = -3
+position = Vector2(640, 0)
+texture = ExtResource("5_ladg1")
+centered = false
+flip_h = true
 
 [connection signal="pressed" from="TitleButton" to="TitleButton" method="_on_pressed"]
 [connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]

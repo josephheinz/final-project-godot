@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://b5cqmrw8ooqlu"]
+
+[ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="1_nbdv7"]
+
+[resource]
+script = ExtResource("1_nbdv7")
+name = "Dodge"
+cardImage = "uid://cbs8x6j0kl0nb"
+allowedTargets = Array[int]([0])
+useType = 2
+useAmount = 1
+basePrice = 2
+usePoints = 5
+metadata/_custom_type_script = "uid://btwaipkpf15mh"

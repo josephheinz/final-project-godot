@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=2 format=3 uid="uid://djrkcamanx0ak"]
+
+[ext_resource type="Script" uid="uid://btwaipkpf15mh" path="res://Cards/card.gd" id="1_ixgbj"]
+
+[resource]
+script = ExtResource("1_ixgbj")
+name = "Trickshot"
+cardImage = "uid://cswfaqxo70pph"
+allowedTargets = Array[int]([1])
+useType = 0
+useAmount = 2
+basePrice = 4
+usePoints = 10
+metadata/_custom_type_script = "uid://btwaipkpf15mh"

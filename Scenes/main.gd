@@ -118,6 +118,8 @@ func place_boss_tile() -> void:
 func _ready() -> void:
 	if !Global.State.player.character or Global.State.player.character == null:
 		Global.State.player.character = Global.CHARACTERS.KNIGHT
+	if Global.Cards.Deck == []:
+		Global.Cards.Deck = Global.character_decks[Global.State.player.character]
 	if !Global.State.player.stats:
 		Global.State.player.stats = Global.character_stats[Global.State.player.character]
 	if len(Global.RoomsMap) > 0:
