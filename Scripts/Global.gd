@@ -47,8 +47,8 @@ var character_cards: Dictionary[CHARACTERS, Array] = {
 }
 
 var character_decks: Dictionary[CHARACTERS, Array] = {
-	CHARACTERS.KNIGHT: ["res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres"],
-	CHARACTERS.ARCHER: ["res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_dodge.tres","res://Cards/card_shot.tres",]
+	CHARACTERS.KNIGHT: ["res://Cards/card_deflect.tres","res://Cards/card_stab.tres","res://Cards/card_deflect.tres","res://Cards/card_stab.tres","res://Cards/card_deflect.tres","res://Cards/card_stab.tres","res://Cards/card_deflect.tres","res://Cards/card_stab.tres","res://Cards/card_block.tres","res://Cards/card_slash.tres"],
+	CHARACTERS.ARCHER: ["res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_dodge.tres","res://Cards/card_shot.tres","res://Cards/card_hide.tres","res://Cards/card_trickshot.tres",]
 }
 
 var character_sprites: Dictionary[CHARACTERS, Resource] = {

@@ -77,7 +77,6 @@ func enemy_turn() -> void:
 		Global.RNG.randi_range(-half_size.y, half_size.y)
 	)
 	txt.global_position = _pos + random_offset
-	print(txt.position)
 	
 	await result.awaitable
 	result.node.queue_free()
@@ -132,7 +131,6 @@ func _process(_delta: float) -> void:
 	combatTick()
 
 func float_text(target: Node, params: Dictionary) -> void:
-	print(target, " ", params)
 	var txt := floating_text.instantiate()
 	
 	txt.amount = params.damage
@@ -146,7 +144,6 @@ func float_text(target: Node, params: Dictionary) -> void:
 		Global.RNG.randi_range(-half_size.y, half_size.y)
 	)
 	txt.global_position = _pos + random_offset
-	print(txt.position)
 	
 	await params.awaitable
 	params.node.queue_free()
