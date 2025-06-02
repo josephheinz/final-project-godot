@@ -57,9 +57,9 @@ var character_sprites: Dictionary[CHARACTERS, Resource] = {
 }
 
 var enemies: Dictionary[float, Array] = {
-	1: [load("res://Enemies/gublin.tres"),load("res://Enemies/goop.tres"),load("res://Enemies/hellpup.tres"),load("res://Enemies/ghost.tres"),load("res://Enemies/phil.tres")],
-	1.25: [load("res://Enemies/hubgublin.tres"),load("res://Enemies/super_goop.tres"),load("res://Enemies/hellhound.tres"),load("res://Enemies/wraith.tres"),load("res://Enemies/phil.tres")],
-	1.75: [load("res://Enemies/gublin_king.tres")]
+	1: [load("res://Enemies/gublin.tres"),load("res://Enemies/goop.tres"),load("res://Enemies/hellpup.tres"),load("res://Enemies/ghost.tres"),load("res://Enemies/phil.tres"),load("res://Enemies/chair.tres")],
+	1.25: [load("res://Enemies/hubgublin.tres"),load("res://Enemies/super_goop.tres"),load("res://Enemies/hellhound.tres"),load("res://Enemies/wraith.tres"),load("res://Enemies/phil.tres"),load("res://Enemies/horseman.tres")],
+	1.75: [load("res://Enemies/gublin_king.tres"),load("res://Enemies/stone_golem.tres")]
 }
 
 var character_stats: Dictionary[CHARACTERS, Dictionary]

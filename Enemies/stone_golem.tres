@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="enemy" load_steps=2 format=3 uid="uid://c54qixanhpt8e"]
+
+[ext_resource type="Script" uid="uid://b683ep3d11vdk" path="res://Enemies/enemy.gd" id="1_oxuig"]
+
+[resource]
+script = ExtResource("1_oxuig")
+maxHealth = 10
+target_type = 1
+block = 10
+enemyImage = "uid://0dr4kl0l8lir"
+name = "Stone Golem"
+damage = 4
+metadata/_custom_type_script = "uid://b683ep3d11vdk"
